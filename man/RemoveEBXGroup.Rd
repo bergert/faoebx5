@@ -10,15 +10,8 @@ RemoveEBXGroup(data, gr_name, folder, branch = "Fishery",
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{gr_name}{group name which the data will be read from.  Please, see
-the code list options after run the function \code{\link{GetEBXGroups}} in the field "Name".}
-
 \item{folder}{folder name in EBX that the code list is stored.  Please, see
 the code list options by running the function \code{\link{GetEBXGroups}}}
-
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
 }
 \value{
 boolean

@@ -4,7 +4,8 @@
 #' available in the EBX5 to be read from using the function
 #' \code{\link{ReadEBXCodeList}}.
 #'
-#' @inheritParams ReadEBXCodeList
+#' @param branch branch name.
+#' @param instance instance name.
 #'
 #' @seealso \code{\link{ReadEBXCodeList}}
 #'

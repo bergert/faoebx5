@@ -6,11 +6,6 @@
 \usage{
 GetEBXGroups(branch = "Fishery", instance = "Fishery")
 }
-\arguments{
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
-}
 \value{
 Returns an object of the class \code{\link[data.table]{data.table}}
 }

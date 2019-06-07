@@ -4,15 +4,11 @@
 \alias{ReadEBXGroup}
 \title{Read EBX5 Group}
 \usage{
-ReadEBXGroup(gr_name, branch = "Fishery", instance = "Fishery")
+ReadEBXGroup(sdmx_name)
 }
 \arguments{
-\item{gr_name}{group name which the data will be read from.  Please, see
-the code list options after run the function \code{\link{GetEBXGroups}} in the field "Name".}
-
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
+\item{sdmx_name}{group name which the data will be read from.  Please, see
+the code list options after run the function \code{\link{GetEBXGroups}} in the field "Acronym".}
 }
 \value{
 Return an object of the class \code{\link[data.table]{data.table}}.
@@ -23,7 +19,7 @@ This function aimed to read group data from EBX5 to R.
 \examples{
 
 \dontrun{
-gr <- ReadEBXGroup(gr_name = 'Group_CPCDiv_CPCGroup')
+gr <- ReadEBXGroup(sdmx_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
 }
 
 }

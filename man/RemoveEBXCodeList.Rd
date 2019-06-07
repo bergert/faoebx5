@@ -10,15 +10,8 @@ RemoveEBXCodeList(data, cl_name, folder, branch = "Fishery",
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{cl_name}{code list name which the data will be read from. Please, see
-the code list options by running the function \code{\link{GetEBXCodeLists}} in the field "Name".}
-
 \item{folder}{folder name in EBX that the code list is stored.  Please, see
 the code list options by running the function \code{\link{GetEBXCodeLists}} (\code{\link[base]{character}}).}
-
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
 }
 \value{
 boolean

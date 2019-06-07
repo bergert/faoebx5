@@ -2,10 +2,8 @@
 #'
 #' @description This function aimed to read group data from EBX5 to R.
 #'
-#' @param gr_name group name which the data will be read from.  Please, see
-#' the code list options after run the function \code{\link{GetEBXGroups}} in the field "Name".
-#' @param branch branch name.
-#' @param instance instance name.
+#' @param sdmx_name group name which the data will be read from.  Please, see
+#' the code list options after run the function \code{\link{GetEBXGroups}} in the field "Acronym".
 #'
 #' @seealso \code{\link{GetEBXGroups}}.
 #'
@@ -19,18 +17,30 @@
 #' @examples
 #'
 #' \dontrun{
-#' gr <- ReadEBXGroup(gr_name = 'Group_CPCDiv_CPCGroup')
+#' gr <- ReadEBXGroup(sdmx_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
 #' }
 #'
 #' @export
 #'
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-ReadEBXGroup <- function(gr_name,
-                         branch = 'Fishery',
-                         instance = 'Fishery') {
+ReadEBXGroup <- function(sdmx_name) {
 
-  if(missing(gr_name)) {
-    stop('Please, provide the group name.')
+  if(!exists("ebx5.gr_data")) {
+
+    ebx5.gr_data <<- GetEBXGroups()
+
+  }
+
+  if(missing(sdmx_name)) {
+    stop('Please, provide the code list name.')
+  }
+
+  branch <- as.character(ebx5.gr_data$Branch[ebx5.gr_data$Acronym == sdmx_name])
+  instance <- as.character(ebx5.gr_data$Instance[ebx5.gr_data$Acronym == sdmx_name])
+  gr_name <- as.character(ebx5.gr_data$Name[ebx5.gr_data$Acronym == sdmx_name])
+
+  if (is.na(branch) | is.na(instance) | is.na(gr_name)) {
+    stop('Cannot find barnch,instance for ', gr_name)
   }
 
   .user <- Sys.getenv('USERNAME_EBX')

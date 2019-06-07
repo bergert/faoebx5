@@ -4,15 +4,11 @@
 \alias{ReadEBXCodeList}
 \title{Read EBX5 Code List}
 \usage{
-ReadEBXCodeList(cl_name, branch = "Fishery", instance = "Fishery")
+ReadEBXCodeList(sdmx_name)
 }
 \arguments{
-\item{cl_name}{code list name which the data will be read from. Please, see
-the code list options by running the function \code{\link{GetEBXCodeLists}} in the field "Name".}
-
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
+\item{sdmx_name}{code list name which the data will be read from. Please, see
+the code list options by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".}
 }
 \value{
 Return an object of the class \code{\link[data.table]{data.table}}.
@@ -22,7 +18,7 @@ This function aimed to read code list data from EBX5 to R.
 }
 \examples{
 \dontrun{
-ReadEBXCodeList(cl_name = "ISSCFC")
+ReadEBXCodeList(sdmx_name = "CL_FI_COMMODITY_ISSCFC")
 }
 }
 \seealso{

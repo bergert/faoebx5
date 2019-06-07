@@ -45,7 +45,7 @@ head(ebx_cl)
 This function aimed to read code list data from EBX5 to R. As we can see,
 
 ```{r read_codelists, eval=T, include=TRUE}
-cl_fao_level1 <- ReadEBXCodeList(cl_name = 'FAO_Level1 ')
+cl_fao_level1 <- ReadEBXCodeList(sdmx_name = 'CL_FI_COMMODITY_FAO_LEVEL1')
 cl_fao_level1 %>% tbl_df()
 ```
 
