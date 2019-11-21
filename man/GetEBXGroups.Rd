@@ -4,14 +4,17 @@
 \alias{GetEBXGroups}
 \title{Get EBX Groups}
 \usage{
-GetEBXGroups(branch = "Fishery", instance = "Fishery")
+GetEBXGroups(connection)
 }
 \value{
 Returns an object of the class \code{\link[data.table]{data.table}}
 }
 \description{
-This function aimed to get the list of groups
-available in the EBX5 to be read from using the function
+This function returns the list of groups
+defined in the 'Metatadata' structure in EBX5. Metadata contains
+the instance, branch and the code-list name used in EBX5.
+This way, the software uses the SDMX-style group name, and the actual
+location inside EBX5 can be changed without breaking the software.
 \code{\link{ReadEBXGroup}}.
 }
 \examples{
@@ -24,5 +27,7 @@ GetEBXGroups()
 \code{\link{ReadEBXGroup}}
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

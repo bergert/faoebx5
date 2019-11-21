@@ -2,21 +2,22 @@
 % Please edit documentation in R/cl_GetEBXCodeLists.R
 \name{GetEBXCodeLists}
 \alias{GetEBXCodeLists}
-\title{Get EBX5 Code List}
+\title{Get EBX5 Code Lists}
 \usage{
-GetEBXCodeLists(branch = "Fishery", instance = "Fishery")
+GetEBXCodeLists(connection)
 }
 \arguments{
-\item{branch}{branch name.}
-
-\item{instance}{instance name.}
+\item{connection}{is optional}
 }
 \value{
 Returns an object of the class \code{\link[data.table]{data.table}}
 }
 \description{
-This function aimed to get the list of code lists
-available in the EBX5 to be read from using the function
+This function returns the list of code lists
+defined in the 'Metatadata' structure in EBX5. Metadata contains
+the instance, branch and the code-list name used in EBX5.
+This way, the software uses the SDMX-style codelist name, and the actual
+location inside EBX5 can be changed without breaking the software.
 \code{\link{ReadEBXCodeList}}.
 }
 \examples{
@@ -30,5 +31,7 @@ GetEBXCodeLists()
 \code{\link{ReadEBXCodeList}}
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

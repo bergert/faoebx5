@@ -4,14 +4,15 @@
 \alias{RemoveEBXGroup}
 \title{Remove rows in EBX5 Group}
 \usage{
-RemoveEBXGroup(data, gr_name, folder, branch = "Fishery",
-  instance = "Fishery")
+RemoveEBXGroup(data, sdmx_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{folder}{folder name in EBX that the code list is stored.  Please, see
-the code list options by running the function \code{\link{GetEBXGroups}}}
+\item{sdmx_name}{group name, in SDMX style. Please, see
+the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
+The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean
@@ -21,5 +22,7 @@ This function aimed to remove
 data rows into a group stored in EBX5 through R.
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

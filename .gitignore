@@ -34,3 +34,9 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
+
+# notes during development
+*.txt
+
+# saved connection settings
+ebx5_connection.yaml

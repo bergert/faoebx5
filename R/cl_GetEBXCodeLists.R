@@ -1,11 +1,13 @@
-#' @title Get EBX5 Code List
+#' @title Get EBX5 Code Lists
 #'
-#' @description This function aimed to get the list of code lists
-#' available in the EBX5 to be read from using the function
+#' @description This function returns the list of code lists
+#' defined in the 'Metatadata' structure in EBX5. Metadata contains
+#' the instance, branch and the code-list name used in EBX5.
+#' This way, the software uses the SDMX-style codelist name, and the actual
+#' location inside EBX5 can be changed without breaking the software.
 #' \code{\link{ReadEBXCodeList}}.
 #'
-#' @param branch branch name.
-#' @param instance instance name.
+#' @param connection is optional
 #'
 #' @seealso \code{\link{ReadEBXCodeList}}
 #'
@@ -24,48 +26,17 @@
 #'
 #' @export
 #'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-GetEBXCodeLists <- function(branch = 'Fishery', instance = 'Fishery') {
+GetEBXCodeLists <- function(connection) {
 
-  .user <- Sys.getenv('USERNAME_EBX')
+  #-- EBX5: connection ----
 
-
-  ##-- SOAP: Header ----
-  headerFields <- header_fields()
-
-  ##-- Body: request ----
-  body <- body_get_request(.user     = .user,
-                           .type     = 'EBXCodelist',
-                           .branch   = branch,
-                           .instance = instance)
-
-  ##-- API request ----
-  reader <- basicTextGatherer()
-  header <- basicTextGatherer()
-
-  curlPerform(url = headerFields["SOAPAction"],
-              httpheader = headerFields,
-              postfields = body,
-              writefunction = reader$update,
-              headerfunction = header$update)
-
-  ##-- Status ----
-  h <- parseHTTPHeader(header$value())
-  if(!(h['status'] >= 200 & h['status'] <= 300)) {
-
-    doc <- xmlParse(reader$value())
-    df  <- xmlToDataFrame(getNodeSet(doc, "//SOAP-ENV:Fault"), stringsAsFactors = F)
-    msg <- paste(names(df), ": ", df[1,], collapse = "\n", sep = '')
-
-    stop('Please, check if you have permission to access this data.\n\n',
-         'Details:\n', msg)
-
+  if(missing(connection)) {
+    connection <- GetConnection()
   }
 
-  ##--- Converting XML object to dataframe ----
-  doc <- xmlParse(reader$value())
-  df  <- xmlToDataFrame(nodes = getNodeSet(doc, "//EBXCodelist"))
-  df  <- data.table::data.table(df)
-
-  return(df)
+  #-- read metadata::EBXCodelist ----
+  return (getCodeList(connection, connection$meta_branch, connection$meta_instance, 'EBXCodelist'))
 }
+

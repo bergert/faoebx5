@@ -4,11 +4,15 @@
 \alias{InsertEBXGroup}
 \title{Insert rows in EBX5 Group}
 \usage{
-InsertEBXGroup(data, gr_name, folder, branch = "Fishery",
-  instance = "Fishery")
+InsertEBXGroup(data, sdmx_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
+
+\item{sdmx_name}{group name, in SDMX style. Please, see
+the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
+The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 
 \item{folder}{folder name in EBX that the code list is stored.  Please, see
 the code list options by running the function \code{\link{GetEBXGroups}}}
@@ -38,5 +42,7 @@ instance = 'Fishery')
 \code{\link{GetEBXGroups}}
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

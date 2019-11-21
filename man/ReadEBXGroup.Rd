@@ -7,14 +7,16 @@
 ReadEBXGroup(sdmx_name)
 }
 \arguments{
-\item{sdmx_name}{group name which the data will be read from.  Please, see
-the code list options after run the function \code{\link{GetEBXGroups}} in the field "Acronym".}
+\item{sdmx_name}{group name, in SDMX style. Please, see
+the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
+The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 Return an object of the class \code{\link[data.table]{data.table}}.
 }
 \description{
-This function aimed to read group data from EBX5 to R.
+This function reads group data from EBX5 to R.
 }
 \examples{
 

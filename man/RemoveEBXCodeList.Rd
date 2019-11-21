@@ -4,14 +4,15 @@
 \alias{RemoveEBXCodeList}
 \title{Remove rows in EBX5 Code List}
 \usage{
-RemoveEBXCodeList(data, cl_name, folder, branch = "Fishery",
-  instance = "Fishery")
+RemoveEBXCodeList(data, sdmx_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{folder}{folder name in EBX that the code list is stored.  Please, see
-the code list options by running the function \code{\link{GetEBXCodeLists}} (\code{\link[base]{character}}).}
+\item{sdmx_name}{code list name, in SDMX style. Please, see
+the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean
@@ -21,5 +22,7 @@ This function aimed to remove
 data rows into a code list stored in EBX5 through R.
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

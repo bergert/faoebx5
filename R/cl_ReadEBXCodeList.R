@@ -1,9 +1,11 @@
 #' @title Read EBX5 Code List
 #'
-#' @description This function aimed to read code list data from EBX5 to R.
+#' @description This function reads a code list from EBX5 to R.
 #'
-#' @param sdmx_name code list name which the data will be read from. Please, see
-#' the code list options by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+#' @param sdmx_name code list name, in SDMX style. Please, see
+#' the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+#' The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+#' using the metadata structure.
 #'
 #' @seealso \code{\link{GetEBXCodeLists}}.
 #'
@@ -23,61 +25,31 @@
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 ReadEBXCodeList <- function(sdmx_name) {
 
-  if(!exists("ebx5.cl_data")) {
-
-    ebx5.cl_data <<- GetEBXCodeLists()
-
-  }
-
   if(missing(sdmx_name)) {
     stop('Please, provide the code list name.')
   }
 
+  #-- connection details ----
+  connection <- GetConnection()
+
+  #-- read metadata; if not already loaded
+  if(!exists("ebx5.cl_data")) {
+    ebx5.cl_data <<- GetEBXCodeLists(connection)
+  }
+
+  if (length(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name]) == 0) {
+    stop('Cannot find a codelist with acronym=<', sdmx_name, '> defined in EBX metadata')
+  }
+
+  #-- resolve the acutal location using metadata ----
   branch <- as.character(ebx5.cl_data$Branch[ebx5.cl_data$Acronym == sdmx_name])
   instance <- as.character(ebx5.cl_data$Instance[ebx5.cl_data$Acronym == sdmx_name])
   cl_name <- as.character(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name])
 
   if (is.na(branch) | is.na(instance) | is.na(cl_name)) {
-    stop('Cannot find barnch,instance for ', cl_name)
+    stop('Cannot find branch,instance for ', sdmx_name)
   }
 
-  .user <- Sys.getenv('USERNAME_EBX')
-
-  ##-- SOAP: Header ----
-  headerFields <- header_fields()
-
-  ##-- Body: request ----
-  body <- body_select_request(.user     = .user,
-                              .name     = cl_name,
-                              .branch   = branch,
-                              .instance = instance)
-
-  ##-- API request ----
-  reader <- basicTextGatherer()
-  header <- basicTextGatherer()
-
-  curlPerform(url = headerFields["SOAPAction"],
-              httpheader = headerFields,
-              postfields = body,
-              writefunction = reader$update,
-              headerfunction = header$update)
-
-  ##-- Status ----
-  h <- parseHTTPHeader(header$value())
-  if(!(h['status'] >= 200 & h['status'] <= 300)) {
-
-    doc <- xmlParse(reader$value())
-    df  <- xmlToDataFrame(getNodeSet(doc, "//SOAP-ENV:Fault"), stringsAsFactors = F)
-    msg <- paste(names(df), ": ", df[1,], collapse = "\n", sep = '')
-
-    stop('Please, check if you have permission to access this data.\n\n',
-         'Details:\n', msg)
-  }
-
-  ##--- Converting XML object to dataframe ----
-  doc <- xmlParse(reader$value())
-  df  <- xmlToDataFrame(nodes = getNodeSet(doc, paste0("//", cl_name)))
-  df  <- data.table::data.table(df)
-
-  return(df)
+  #-- read from EBX5
+  return (getCodeList(connection, branch, instance, cl_name))
 }

@@ -3,8 +3,8 @@ Type: Package
 Title: faoebx5: an R package to access EBX5 data from R
 Version: 0.1.0
 Authors@R: c(
-    person("Luis G.", "Silva e Silva", email = "luis.silvaesilva@fao.org",  role = c("aut", "cre")),
-    person("Thomas", "Berger", email = "thomas.berger@fao.org",  role = c("aut")))
+    person("Thomas", "Berger", email = "thomas.berger@fao.org",  role = c("aut", "cre")),
+    person("Luis G.", "Silva e Silva", email = "luis.silvaesilva@fao.org",  role = c("aut")))
 Description: The faoebx5 package provides tools to read, write, and update data in the EBX5 through R.
 License: GPL-3 + file LICENSE
 LazyData: true

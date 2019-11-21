@@ -4,11 +4,15 @@
 \alias{InsertEBXCodeList}
 \title{Insert rows in EBX5 Code List}
 \usage{
-InsertEBXCodeList(data, cl_name, folder, branch = "Fishery",
-  instance = "Fishery")
+InsertEBXCodeList(data, sdmx_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
+
+\item{sdmx_name}{code list name, in SDMX style. Please, see
+the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 
 \item{folder}{folder name in EBX that the code list is stored.  Please, see
 the code list options by running the function \code{\link{GetEBXCodeLists}} (\code{\link[base]{character}}).}
@@ -35,13 +39,12 @@ Branch = 'Fishery',
 Instance = 'Fishery')
 
 InsertEBXCodeList(data     = cl_new,
-                  cl_name  = 'EBXCodelist',
-                  folder   = 'Metadata',
-                  branch   = 'Fishery',
-                  instance = 'Fishery')
+                  sdmx_name  = 'CL_FI_COUNTRY_ITEM')
 }
 
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }
