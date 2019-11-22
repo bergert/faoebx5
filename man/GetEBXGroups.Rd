@@ -6,6 +6,9 @@
 \usage{
 GetEBXGroups(connection)
 }
+\arguments{
+\item{connection}{is optional}
+}
 \value{
 Returns an object of the class \code{\link[data.table]{data.table}}
 }
@@ -15,7 +18,7 @@ defined in the 'Metatadata' structure in EBX5. Metadata contains
 the instance, branch and the code-list name used in EBX5.
 This way, the software uses the SDMX-style group name, and the actual
 location inside EBX5 can be changed without breaking the software.
-\code{\link{ReadEBXGroup}}.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \examples{
 
@@ -24,7 +27,7 @@ GetEBXGroups()
 }
 }
 \seealso{
-\code{\link{ReadEBXGroup}}
+\code{\link{ReadEBXGroup}} \code{\link{GetEBXCodeLists}}
 }
 \author{
 Thomas Berger, \email{thomas.berger@fao.org}

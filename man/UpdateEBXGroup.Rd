@@ -8,11 +8,6 @@ UpdateEBXGroup(data, sdmx_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
-
-\item{sdmx_name}{group name, in SDMX style. Please, see
-the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
-The actual group location in EBX5 (branch, instance, code-list-name) are resolved
-using the metadata structure.}
 }
 \value{
 boolean

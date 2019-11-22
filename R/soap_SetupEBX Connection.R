@@ -15,7 +15,7 @@
 #' install the Secret Service API ()
 #' https://specifications.freedesktop.org/secret-service/latest/
 #'
-#' @details When you run the function \code{SetEBXCredentials()} with lock=TRUE,
+#' @details When you run the function \code{SetupEBXConnection()} with lock=TRUE,
 #' the connection details are secured with an access password. A box to type the
 #' password for unlokcing the connection deatils will appear.
 #'

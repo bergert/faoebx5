@@ -4,10 +4,10 @@
 \alias{ReadEBXCodeList}
 \title{Read EBX5 Code List}
 \usage{
-ReadEBXCodeList(sdmx_name)
+ReadEBXCodeList(sdmx_code_list_name)
 }
 \arguments{
-\item{sdmx_name}{code list name, in SDMX style. Please, see
+\item{sdmx_code_list_name}{code list name, in SDMX style. Please, see
 the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
 The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
 using the metadata structure.}
@@ -17,6 +17,7 @@ Return an object of the class \code{\link[data.table]{data.table}}.
 }
 \description{
 This function reads a code list from EBX5 to R.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \examples{
 \dontrun{

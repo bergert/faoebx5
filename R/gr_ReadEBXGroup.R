@@ -2,7 +2,7 @@
 #'
 #' @description This function reads group data from EBX5 to R.
 #'
-#' @param sdmx_name group name, in SDMX style. Please, see
+#' @param sdmx_group_name group name, in SDMX style. Please, see
 #' the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
 #' The actual group location in EBX5 (branch, instance, code-list-name) are resolved
 #' using the metadata structure.
@@ -19,15 +19,15 @@
 #' @examples
 #'
 #' \dontrun{
-#' gr <- ReadEBXGroup(sdmx_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
+#' gr <- ReadEBXGroup(sdmx_group_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
 #' }
 #'
 #' @export
 #'
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-ReadEBXGroup <- function(sdmx_name) {
+ReadEBXGroup <- function(sdmx_group_name) {
 
-  if(missing(sdmx_name)) {
+  if(missing(sdmx_group_name)) {
     stop('Please, provide the group name.')
   }
 
@@ -39,16 +39,16 @@ ReadEBXGroup <- function(sdmx_name) {
     ebx5.gr_data <<- GetEBXGroups()
   }
 
-  if (length(ebx5.gr_data$Name[ebx5.gr_data$Acronym == sdmx_name]) == 0) {
-    stop('Cannot find a group with acronym=<', sdmx_name, '> defined in EBX metadata')
+  if (length(ebx5.gr_data$Name[ebx5.gr_data$Acronym == sdmx_group_name]) == 0) {
+    stop('Cannot find a group with acronym=<', sdmx_group_name, '> defined in EBX metadata')
   }
 
-  branch   <- as.character(ebx5.gr_data$Branch[ebx5.gr_data$Acronym == sdmx_name])
-  instance <- as.character(ebx5.gr_data$Instance[ebx5.gr_data$Acronym == sdmx_name])
-  gr_name  <- as.character(ebx5.gr_data$Name[ebx5.gr_data$Acronym == sdmx_name])
+  branch   <- as.character(ebx5.gr_data$Branch[ebx5.gr_data$Acronym == sdmx_group_name])
+  instance <- as.character(ebx5.gr_data$Instance[ebx5.gr_data$Acronym == sdmx_group_name])
+  gr_name  <- as.character(ebx5.gr_data$Name[ebx5.gr_data$Acronym == sdmx_group_name])
 
   if (is.na(branch) | is.na(instance) | is.na(gr_name)) {
-    stop('Cannot find branch,instance for ', sdmx_name)
+    stop('Cannot find branch,instance for ', sdmx_group_name)
   }
 
   #-- read from EBX5--

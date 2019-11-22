@@ -4,42 +4,29 @@
 \alias{InsertEBXCodeList}
 \title{Insert rows in EBX5 Code List}
 \usage{
-InsertEBXCodeList(data, sdmx_name)
+InsertEBXCodeList(data, sdmx_codelist_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be appended.}
-
-\item{sdmx_name}{code list name, in SDMX style. Please, see
-the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
-The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
-using the metadata structure.}
-
-\item{folder}{folder name in EBX that the code list is stored.  Please, see
-the code list options by running the function \code{\link{GetEBXCodeLists}} (\code{\link[base]{character}}).}
+\item{data}{a \code{\link[base]{data.frame}} that will be inserted.}
 }
 \value{
 boolean
 }
 \description{
-This function aimed to insert
+This function will insert
 data rows into a code list stored in EBX5 through R.
 }
 \details{
-Note that the new rows must have the same columns name os the table that will be appended.
+The data columns provided must follow the code-list which is being updated.
+All keys of the code-list must be given, as well as any fields which are mandatory.
+Using the SOAP-API the column name is not the label visible in EBX, but the field name.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \examples{
 
 \dontrun{
-cl_new <- data.frame(
-Identifier = c(999, 888),
-Acronym = 'TEST_ACRONYM',
-Folder = 'TESTFOLDER',
-Name = 'TEST_NAME',
-Branch = 'Fishery',
-Instance = 'Fishery')
-
-InsertEBXCodeList(data     = cl_new,
-                  sdmx_name  = 'CL_FI_COUNTRY_ITEM')
+cl_new <- data.frame(Identifier = c(999, 888), Name_En=c('Test1','Test2'))
+InsertEBXCodeList(data = cl_new, sdmx_codelist_name = 'CL_FI_COUNTRY_ITEM')
 }
 
 }

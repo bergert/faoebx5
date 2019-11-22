@@ -4,10 +4,10 @@
 \alias{ReadEBXGroup}
 \title{Read EBX5 Group}
 \usage{
-ReadEBXGroup(sdmx_name)
+ReadEBXGroup(sdmx_group_name)
 }
 \arguments{
-\item{sdmx_name}{group name, in SDMX style. Please, see
+\item{sdmx_group_name}{group name, in SDMX style. Please, see
 the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
 The actual group location in EBX5 (branch, instance, code-list-name) are resolved
 using the metadata structure.}
@@ -21,7 +21,7 @@ This function reads group data from EBX5 to R.
 \examples{
 
 \dontrun{
-gr <- ReadEBXGroup(sdmx_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
+gr <- ReadEBXGroup(sdmx_group_name = 'HCL_FI_COMMODITY_FAOL1_FAOL2')
 }
 
 }

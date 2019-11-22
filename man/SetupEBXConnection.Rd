@@ -31,17 +31,9 @@ install the Secret Service API ()
 https://specifications.freedesktop.org/secret-service/latest/
 }
 \details{
-When you run the function \code{SetEBXCredentials()} with lock=TRUE,
+When you run the function \code{SetupEBXConnection()} with lock=TRUE,
 the connection details are secured with an access password. A box to type the
 password for unlokcing the connection deatils will appear.
-}
-\examples{
-\dontrun{
-SetupEBXConnection('Fishery','Fishery','http://hqldvebx1.hq.un.fao.org:8080/ebx-dataservices/connector','Fishery-SOAP', 'W8EqZpDM4YBMKsrq')
-}
-
-
-
 }
 \seealso{
 \code{\link{RemoveEBXConnection}}.

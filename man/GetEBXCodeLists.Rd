@@ -19,6 +19,7 @@ the instance, branch and the code-list name used in EBX5.
 This way, the software uses the SDMX-style codelist name, and the actual
 location inside EBX5 can be changed without breaking the software.
 \code{\link{ReadEBXCodeList}}.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \examples{
 
@@ -28,7 +29,7 @@ GetEBXCodeLists()
 
 }
 \seealso{
-\code{\link{ReadEBXCodeList}}
+\code{\link{ReadEBXCodeList}} \code{\link{GetEBXGroups}}
 }
 \author{
 Thomas Berger, \email{thomas.berger@fao.org}

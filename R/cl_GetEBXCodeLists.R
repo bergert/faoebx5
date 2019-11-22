@@ -6,10 +6,11 @@
 #' This way, the software uses the SDMX-style codelist name, and the actual
 #' location inside EBX5 can be changed without breaking the software.
 #' \code{\link{ReadEBXCodeList}}.
+#' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
 #' @param connection is optional
 #'
-#' @seealso \code{\link{ReadEBXCodeList}}
+#' @seealso \code{\link{ReadEBXCodeList}} \code{\link{GetEBXGroups}}
 #'
 #' @return Returns an object of the class \code{\link[data.table]{data.table}}
 #'

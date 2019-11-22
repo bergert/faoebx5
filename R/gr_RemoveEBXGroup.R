@@ -1,7 +1,7 @@
 #' @title Remove rows in EBX5 Group
 #'
-#' @description This function aimed to remove
-#' data rows into a group stored in EBX5 through R.
+#' @description This function removes data rows from a group stored in EBX5.
+#' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
 #' @inheritParams InsertEBXGroup
 #'

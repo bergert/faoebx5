@@ -5,11 +5,11 @@
 #' the instance, branch and the code-list name used in EBX5.
 #' This way, the software uses the SDMX-style group name, and the actual
 #' location inside EBX5 can be changed without breaking the software.
-#' \code{\link{ReadEBXGroup}}.
+#' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
-#' @inheritParams ReadEBXGroup
+#' @param connection is optional
 #'
-#' @seealso \code{\link{ReadEBXGroup}}
+#' @seealso \code{\link{ReadEBXGroup}} \code{\link{GetEBXCodeLists}}
 #'
 #' @return Returns an object of the class \code{\link[data.table]{data.table}}
 #'

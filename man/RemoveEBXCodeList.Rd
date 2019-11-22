@@ -4,22 +4,23 @@
 \alias{RemoveEBXCodeList}
 \title{Remove rows in EBX5 Code List}
 \usage{
-RemoveEBXCodeList(data, sdmx_name)
+RemoveEBXCodeList(data, sdmx_codelist_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be appended.}
+\item{data}{a \code{\link[base]{data.frame}} that will be inserted.}
 
-\item{sdmx_name}{code list name, in SDMX style. Please, see
-the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
-The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
-using the metadata structure.}
+\item{sdmx_codelist_name}{codelist name see Acronym \code{\link{GetEBXCodeLists}} (\code{\link[base]{character}}).}
 }
 \value{
 boolean
 }
 \description{
-This function aimed to remove
-data rows into a code list stored in EBX5 through R.
+This function deletes data rows from a code list stored in EBX5.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
+}
+\details{
+For a delete operation, data must specify all keys of the code-list to uniqely idetify the rows.
+Using the SOAP-API the column name is not the label visible in EBX, but the field name.
 }
 \author{
 Thomas Berger, \email{thomas.berger@fao.org}

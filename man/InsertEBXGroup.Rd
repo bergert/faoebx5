@@ -4,12 +4,12 @@
 \alias{InsertEBXGroup}
 \title{Insert rows in EBX5 Group}
 \usage{
-InsertEBXGroup(data, sdmx_name)
+InsertEBXGroup(data, sdmx_group_name)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{sdmx_name}{group name, in SDMX style. Please, see
+\item{sdmx_group_name}{group name, in SDMX style. Please, see
 the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
 The actual group location in EBX5 (branch, instance, code-list-name) are resolved
 using the metadata structure.}
@@ -21,8 +21,8 @@ the code list options by running the function \code{\link{GetEBXGroups}}}
 boolean
 }
 \description{
-This function aimed to insert
-data rows into a group stored in EBX5 through R.
+This function inserts data rows into a group stored in EBX5.
+Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \details{
 Note that the new rows must have the same columns name os the table that will be appended.

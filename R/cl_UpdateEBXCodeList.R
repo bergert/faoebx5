@@ -1,7 +1,7 @@
 #' @title Update rows in EBX5 Code List
 #'
-#' @description This function aimed to update
-#' data rows into a code list stored in EBX5 through R.
+#' @description This function updates data rows of a code list stored in EBX5.
+#' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
 #' @inheritParams InsertEBXCodeList
 #'

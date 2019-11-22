@@ -1,8 +1,9 @@
 #' @title Read EBX5 Code List
 #'
 #' @description This function reads a code list from EBX5 to R.
+#' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
-#' @param sdmx_name code list name, in SDMX style. Please, see
+#' @param sdmx_code_list_name code list name, in SDMX style. Please, see
 #' the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
 #' The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
 #' using the metadata structure.
@@ -23,9 +24,9 @@
 #' @export
 #'
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-ReadEBXCodeList <- function(sdmx_name) {
+ReadEBXCodeList <- function(sdmx_code_list_name) {
 
-  if(missing(sdmx_name)) {
+  if(missing(sdmx_code_list_name)) {
     stop('Please, provide the code list name.')
   }
 
@@ -37,17 +38,17 @@ ReadEBXCodeList <- function(sdmx_name) {
     ebx5.cl_data <<- GetEBXCodeLists(connection)
   }
 
-  if (length(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name]) == 0) {
-    stop('Cannot find a codelist with acronym=<', sdmx_name, '> defined in EBX metadata')
+  if (length(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_code_list_name]) == 0) {
+    stop('Cannot find a codelist with acronym=<', sdmx_code_list_name, '> defined in EBX metadata')
   }
 
   #-- resolve the acutal location using metadata ----
-  branch <- as.character(ebx5.cl_data$Branch[ebx5.cl_data$Acronym == sdmx_name])
-  instance <- as.character(ebx5.cl_data$Instance[ebx5.cl_data$Acronym == sdmx_name])
-  cl_name <- as.character(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name])
+  branch <- as.character(ebx5.cl_data$Branch[ebx5.cl_data$Acronym == sdmx_code_list_name])
+  instance <- as.character(ebx5.cl_data$Instance[ebx5.cl_data$Acronym == sdmx_code_list_name])
+  cl_name <- as.character(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_code_list_name])
 
   if (is.na(branch) | is.na(instance) | is.na(cl_name)) {
-    stop('Cannot find branch,instance for ', sdmx_name)
+    stop('Cannot find branch,instance for ', sdmx_code_list_name)
   }
 
   #-- read from EBX5
