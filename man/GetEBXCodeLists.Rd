@@ -4,7 +4,7 @@
 \alias{GetEBXCodeLists}
 \title{Get EBX5 Code Lists}
 \usage{
-GetEBXCodeLists(connection)
+GetEBXCodeLists(ebx5_connection)
 }
 \arguments{
 \item{connection}{is optional}

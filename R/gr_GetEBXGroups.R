@@ -32,7 +32,7 @@ GetEBXGroups <- function(connection) {
   #-- EBX5: connection ----
 
   if(missing(connection)) {
-    connection <- GetConnection()
+    connection <- GetEBXConnection()
   }
 
   #-- read metadata::EBXCodelist ----

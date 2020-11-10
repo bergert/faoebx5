@@ -5,7 +5,7 @@
 \title{Setup EBX Connection}
 \usage{
 SetupEBXConnection(meta_branch, meta_instance, ebx_soap_url, username,
-  password, lock = FALSE)
+  password)
 }
 \arguments{
 \item{meta_branch}{metadata branch name in EBX}
@@ -25,15 +25,7 @@ and whenever trying to use the credential will ask for the password to unlock th
 Status 0 (zero) ok.
 }
 \description{
-This function will store the SOAP connection details in a secure
-store which is provided by Windows and macOS(keychain). On LINUX, you need to
-install the Secret Service API ()
-https://specifications.freedesktop.org/secret-service/latest/
-}
-\details{
-When you run the function \code{SetupEBXConnection()} with lock=TRUE,
-the connection details are secured with an access password. A box to type the
-password for unlokcing the connection deatils will appear.
+This function will store the SOAP connection details in a yaml file
 }
 \seealso{
 \code{\link{RemoveEBXConnection}}.

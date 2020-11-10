@@ -104,7 +104,7 @@ getCodeList <- function(connection, branch, instance, cl_name) {
 
   ##-- Body: request ----
   body <- soap_request    (.user     = connection$username,
-                           .secret   = connection$secret,
+                           .secret   = connection$password,
                            .verb     = 'select',
                            .type     = cl_name,
                            .branch   = branch,
@@ -152,7 +152,7 @@ updateCodeList <- function(connection, branch, instance, folder, data, cl_name, 
 
   ##-- Body: request ----
   body <- soap_request    (.user     = connection$username,
-                           .secret   = connection$secret,
+                           .secret   = connection$password,
                            .verb     = verb,
                            .type     = cl_name,
                            .branch   = branch,

@@ -32,7 +32,7 @@ ReadEBXGroup <- function(sdmx_group_name) {
   }
 
   #-- connection details ----
-  connection <- GetConnection()
+  connection <- GetEBXConnection()
 
   #-- read metadata; if not already loaded
   if(!exists("ebx5.gr_data")) {

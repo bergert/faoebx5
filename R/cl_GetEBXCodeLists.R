@@ -29,15 +29,15 @@
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-GetEBXCodeLists <- function(connection) {
+GetEBXCodeLists <- function(ebx5_connection) {
 
   #-- EBX5: connection ----
 
-  if(missing(connection)) {
-    connection <- GetConnection()
+  if(missing(ebx5_connection)) {
+    ebx5_connection <- GetEBXConnection()
   }
 
   #-- read metadata::EBXCodelist ----
-  return (getCodeList(connection, connection$meta_branch, connection$meta_instance, 'EBXCodelist'))
+  return (getCodeList(ebx5_connection, ebx5_connection$meta_branch, ebx5_connection$meta_instance, 'EBXCodelist'))
 }
 
