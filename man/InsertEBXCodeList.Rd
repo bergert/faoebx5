@@ -7,7 +7,12 @@
 InsertEBXCodeList(data, sdmx_codelist_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be inserted.}
+\item{data}{a \code{\link[base]{data.frame}} containing all columns to be be inserted}
+
+\item{sdmx_codelist_name}{code list name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean

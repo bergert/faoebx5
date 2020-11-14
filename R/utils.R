@@ -1,10 +1,10 @@
-#' @title Header Fields
+#' @title Soap header; internal
 #'
-#' @description Builds the header fields
+#' @description Create the XML header
 #'
-#' @param soap_action EBX5 SOAP URL to API requests
+#' @param soap_url EBX5 SOAP URL to API requests
 #'
-#' @return character with the header fields
+#' @return XML character with the header fields
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
@@ -22,27 +22,26 @@ header_fields <- function(soap_url) {
   return(header)
 }
 
-#' @title XXX
+#' @title Insert XML; internal
 #'
-#' @description XXX
+#' @description Create XML for soap insert request
 #'
-#' @param .data XXX
-#' @param .cl_name code list name which the data will be read from. Please, see
-#' the code list options by running the function \code{\link{GetEBXCodeLists}}
-#' @return XXX
+#' @param .data data for request
+#' @param .table table name in EBX
+#' @return XML character
 #'
 #' @importFrom XML newXMLNode
 #'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-cl_data_insert_xml <- function(.data,
-                               .cl_name = 'EBXCodelist') {
+cl_data_insert_xml <- function(.data, .table = 'EBXCodelist') {
 
   features <- names(.data)
   out_list <- list()
 
   for(j in 1:nrow(.data)) {
 
-    out_list[[j]] <- newXMLNode(name = .cl_name)
+    out_list[[j]] <- newXMLNode(name = .table)
 
     for(i in 1:ncol(.data)) {
       newXMLNode(name = features[i], .data[j, i], parent = out_list[[j]])
@@ -52,18 +51,22 @@ cl_data_insert_xml <- function(.data,
   return(out_list)
 }
 
-
-#' @title Builds the XML body to insert data
+#' @title Builds the XML body to insert data; internal
 #'
 #' @description Builds the XML body to insert data
 #'
-#' @param .type data source, EBXCodelist or EBXGroup
+#' @param .user EBX5 user name
+#' @param .secret name secret
+#' @param .verb action (select, update, insert, delete)
+#' @param .table the code-list name
+#' @param .branch dataset branch
+#' @param .instance dataset instance
 #'
-#' @return character
+#' @return character XML
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-soap_request <- function(.user, .secret, .verb, .type, .branch, .instance) {
+soap_request <- function(.user, .secret, .verb, .table, .branch, .instance) {
 
   body <- sprintf('<?xml version="1.0" encoding="utf-8"?>
                   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sec="http://schemas.xmlsoap.org/ws/2002/04/secext" xmlns:urn="urn:ebx-schemas:dataservices_1.0">
@@ -84,18 +87,31 @@ soap_request <- function(.user, .secret, .verb, .type, .branch, .instance) {
                   </soapenv:Envelope>',
                   .user,
                   .secret,
-                  .verb, .type,
+                  .verb, .table,
                   .branch,
                   .instance,
-                  .verb, .type)
+                  .verb, .table)
 
   return(body)
 }
 
-getCodeList <- function(connection, branch, instance, cl_name) {
+#' @title get table; internal
+#'
+#' @description Reads a table from EBX
+#'
+#' @param connection connection details
+#' @param branch table branch
+#' @param instance table instance
+#' @param table_name table name
+#'
+#' @return character XML
+#'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
+#' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
+getEBX_Table <- function(connection, branch, instance, table_name) {
 
-  if (is.na(branch) | is.na(instance) | is.na(cl_name)) {
-    stop('Cannot find branch,instance for ', cl_name)
+  if (is.na(branch) | is.na(instance) | is.na(table_name)) {
+    stop('Cannot find branch,instance for ', table_name)
   }
 
 
@@ -106,7 +122,7 @@ getCodeList <- function(connection, branch, instance, cl_name) {
   body <- soap_request    (.user     = connection$username,
                            .secret   = connection$password,
                            .verb     = 'select',
-                           .type     = cl_name,
+                           .table    = table_name,
                            .branch   = branch,
                            .instance = instance)
 
@@ -134,16 +150,30 @@ getCodeList <- function(connection, branch, instance, cl_name) {
 
   ##--- Converting XML object to dataframe ----
   doc <- xmlParse(reader$value())
-  df  <- xmlToDataFrame(nodes = getNodeSet(doc, paste0("//", cl_name)), stringsAsFactors = F)
+  df  <- xmlToDataFrame(nodes = getNodeSet(doc, paste0("//", table_name)), stringsAsFactors = F)
   attr(df, ".internal.selfref") <- NULL
 
   return(df)
 }
 
-updateCodeList <- function(connection, branch, instance, folder, data, cl_name, verb) {
+#' @title update; internal
+#'
+#' @description Updates a table
+#'
+#' @param connection connection details
+#' @param branch table branch
+#' @param instance table instance
+#' @param table_name table name
+#' @param verb what todo (select, insert, update)
+#'
+#' @return TRUE if update was done
+#'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
+#' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
+updateTable <- function(connection, branch, instance, folder, data, table, verb) {
 
-  if (is.na(branch) | is.na(instance) | is.na(cl_name)) {
-    stop('Cannot find branch,instance for ', cl_name)
+  if (is.na(branch) | is.na(instance) | is.na(table)) {
+    stop('Cannot find branch,instance for ', table)
   }
 
 
@@ -154,11 +184,11 @@ updateCodeList <- function(connection, branch, instance, folder, data, cl_name, 
   body <- soap_request    (.user     = connection$username,
                            .secret   = connection$password,
                            .verb     = verb,
-                           .type     = cl_name,
+                           .table    = table,
                            .branch   = branch,
                            .instance = instance)
   ##-- Building XML object----
-  out_list <- cl_data_insert_xml(.data = data, .cl_name = cl_name)
+  out_list <- cl_data_insert_xml(.data = data, .table = table)
 
   body_xml <- xmlParse(body)
   metadata_xml <- getNodeSet(body_xml, paste0("//", folder))
@@ -193,7 +223,20 @@ updateCodeList <- function(connection, branch, instance, folder, data, cl_name, 
   }
 }
 
-
+#' @title update; internal
+#'
+#' @description Updates a table
+#'
+#' @param data user data
+#' @param sdmx_name SDMX table name
+#' @param verb what todo (select, insert, update)
+#' @param instance table instance
+#' @param isCodeList TRUE uses ebx5.cl_datal FALSE uses ebx5.gr_data
+#'
+#' @return TRUE if update was done
+#'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
+#' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 update <- function(data, sdmx_name, verb, isCodeList = TRUE) {
 
   if(missing(data) || missing(sdmx_name)) {
@@ -201,7 +244,7 @@ update <- function(data, sdmx_name, verb, isCodeList = TRUE) {
   }
 
   #-- connection details ----
-  connection <- GetConnection()
+  connection <- GetEBXConnection()
 
   #-- read metadata; if not already loaded
   if (isCodeList) {
@@ -215,7 +258,7 @@ update <- function(data, sdmx_name, verb, isCodeList = TRUE) {
     branch   <- as.character(ebx5.cl_data$Branch[ebx5.cl_data$Acronym == sdmx_name])
     instance <- as.character(ebx5.cl_data$Instance[ebx5.cl_data$Acronym == sdmx_name])
     folder   <- as.character(ebx5.cl_data$Folder[ebx5.cl_data$Acronym == sdmx_name])
-    cl_name  <- as.character(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name])
+    table    <- as.character(ebx5.cl_data$Name[ebx5.cl_data$Acronym == sdmx_name])
   }
   else {
     if(!exists("ebx5.gr_data")) {
@@ -225,14 +268,14 @@ update <- function(data, sdmx_name, verb, isCodeList = TRUE) {
     branch   <- as.character(ebx5.gr_data$Branch[ebx5.cl_data$Acronym == sdmx_name])
     instance <- as.character(ebx5.gr_data$Instance[ebx5.cl_data$Acronym == sdmx_name])
     folder   <- as.character(ebx5.gr_data$Folder[ebx5.cl_data$Acronym == sdmx_name])
-    cl_name  <- as.character(ebx5.gr_data$Name[ebx5.cl_data$Acronym == sdmx_name])
+    table    <- as.character(ebx5.gr_data$Name[ebx5.cl_data$Acronym == sdmx_name])
   }
 
 
-  if (is.na(branch) | is.na(instance) | is.na(cl_name) | is.na(folder)) {
-    stop('Cannot find branch,instance,folder for ', sdmx_name)
+  if (is.na(branch) | is.na(instance) | is.na(table) | is.na(folder)) {
+    stop('Cannot find branch,instance,folder for ', table)
   }
 
   #-- update to EBX5
-  return ( updateCodeList(connection, branch, instance, folder, data, cl_name, verb=verb))
+  return ( updateTable(connection, branch, instance, folder, data, table, verb=verb))
 }

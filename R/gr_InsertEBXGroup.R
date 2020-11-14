@@ -4,8 +4,11 @@
 #' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
 #' @param data a \code{\link[base]{data.frame}} that will be appended.
-#' @param folder folder name in EBX that the code list is stored.  Please, see
-#' the code list options by running the function \code{\link{GetEBXGroups}}
+#' @param sdmx_group_name group name, in SDMX style.
+#' Available code lists are shown by function \code{\link{GetEBXGroups}} in the field "Acronym".
+#' The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+#' using the metadata structure.
+#'
 #' @inheritParams ReadEBXGroup
 #'
 #' @seealso \code{\link{GetEBXGroups}}

@@ -2,22 +2,23 @@
 % Please edit documentation in R/utils.R
 \name{cl_data_insert_xml}
 \alias{cl_data_insert_xml}
-\title{XXX}
+\title{Insert XML; internal}
 \usage{
-cl_data_insert_xml(.data, .cl_name = "EBXCodelist")
+cl_data_insert_xml(.data, .table = "EBXCodelist")
 }
 \arguments{
-\item{.data}{XXX}
+\item{.data}{data for request}
 
-\item{.cl_name}{code list name which the data will be read from. Please, see
-the code list options by running the function \code{\link{GetEBXCodeLists}}}
+\item{.table}{table name in EBX}
 }
 \value{
-XXX
+XML character
 }
 \description{
-XXX
+Create XML for soap insert request
 }
 \author{
+Thomas Berger, \email{thomas.berger@fao.org}
+
 Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

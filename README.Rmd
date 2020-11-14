@@ -24,7 +24,7 @@ The latest development version can be installed from github:
 
 ```{r eval=FALSE, include=TRUE}
 install.packages("devtools")
-devtools::install_github('sws-methodology/faoebx5')
+devtools::install_github('bergertom/faoebx5')
 ```
 
 ## Functions

@@ -2,16 +2,18 @@
 #'
 #' @description This is a utility function to return connection details
 #' required for using the EBX5 SOAP web-API. This function is not intended for
-#' users, therefore it is not exported.
+#' users, it is exported beacuse it can be used for test purposes.
 #'
 #' @seealso \code{\link{SetupEBXConnection}}.
 #'
 #' @return Returns a \code{\link[data.table]{data.table}} with the connection details
 #'
 #' @importFrom yaml yaml.load_file
+#' @export
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 GetEBXConnection <- function() {
+
   if (!file.exists('ebx5_connection.yaml')) {
     stop('the file [ebx5_connection.yaml] cannot be found')
   }

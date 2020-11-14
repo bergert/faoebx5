@@ -3,6 +3,12 @@
 #' @description This function updates data rows of a code list stored in EBX5.
 #' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
+#' @param data a \code{\link[base]{data.frame}} containing all columns to be be updated
+#' @param sdmx_codelist_name code list name, in SDMX style.
+#' Available code lists are shown by function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+#' The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+#' using the metadata structure.
+#'
 #' @inheritParams InsertEBXCodeList
 #'
 #' @return boolean
@@ -10,7 +16,6 @@
 #' @details Note that the udpated rows must have the same columns name os the table that will be updated.
 #'
 #' @examples
-#'
 #' \dontrun{
 #' cl_new <- data.frame(
 #' Identifier = c(999, 888),
@@ -21,10 +26,7 @@
 #' Instance = 'Fishery')
 #'
 #' UpdateEBXCodeList(data     = cl_new,
-#'                   cl_name  = 'EBXCodelist',
-#'                   folder   = 'Metadata',
-#'                   branch   = 'Fishery',
-#'                   instance = 'Fishery')
+#'                   sdmx_codelist_name  = 'EBXCodelist')
 #' }
 #'
 #' @export
@@ -33,8 +35,8 @@
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-UpdateEBXCodeList <- function(data, sdmx_name) {
+UpdateEBXCodeList <- function(data, sdmx_codelist_name) {
 
   #-- update to EBX5
-  return ( update(data, sdmx_name, verb='update', isCodeList = TRUE))
+  return ( update(data, sdmx_codelist_name, verb='update', isCodeList = TRUE))
 }

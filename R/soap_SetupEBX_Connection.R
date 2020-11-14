@@ -5,16 +5,18 @@
 #' @param ebx_soap_url SOAP webservice url
 #' @param username username, a character.
 #' @param password password, a character.
-#' @param lock logical, default is FALSE. If it is TRUE, will store a locked file with the password,
-#' and whenever trying to use the credential will ask for the password to unlock the connection setup.
 #'
-#' @seealso \code{\link{RemoveEBXConnection}}.
+#' @seealso \code{\link{GetEBXConnection}}.
 #'
 #' @description This function will store the SOAP connection details in a yaml file
 #'
 #' @return Status 0 (zero) ok.
 #'
-#' @importFrom keyring key_get keyring_list key_set
+#' @details In case of an shiny app, run the \code{\link{SetupEBXConnection}} from your Rstudio.
+#' The conncetion details are persisted to a file [ebx5_connecion.yml] which you can then embed into the shiny app.
+#' The library faoebx5 uses \code{\link{GetEBXConnection}}, in order to obtain the connection details from the yaml file.
+#' Obviously, the yaml file is excluded, not part of the GIT repository faoebx5.
+#'
 #' @importFrom yaml as.yaml
 #' @export
 #'

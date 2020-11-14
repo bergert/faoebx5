@@ -4,10 +4,16 @@
 \alias{RemoveEBXGroup}
 \title{Remove rows in EBX5 Group}
 \usage{
-RemoveEBXGroup(data, sdmx_name)
+RemoveEBXGroup(data, sdmx_group_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be appended.}
+\item{data}{a \code{\link[base]{data.frame}} that will be removed.
+data must specify the unique primary key(s); which identify the rows to be removed.}
+
+\item{sdmx_group_name}{group name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXGroups}} in the field "Acronym".
+The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean

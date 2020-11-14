@@ -2,8 +2,8 @@
 #'
 #' @description This function reads group data from EBX5 to R.
 #'
-#' @param sdmx_group_name group name, in SDMX style. Please, see
-#' the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
+#' @param sdmx_group_name group name, in SDMX style.
+#' Available code lists are shown by function \code{\link{GetEBXGroups}} in the field "Acronym".
 #' The actual group location in EBX5 (branch, instance, code-list-name) are resolved
 #' using the metadata structure.
 #'
@@ -12,7 +12,6 @@
 #' @return Return an object of the class \code{\link[data.table]{data.table}}.
 #'
 #' @importFrom RCurl basicTextGatherer parseHTTPHeader curlPerform
-#' @importFrom keyring key_get
 #' @importFrom XML getNodeSet xmlToDataFrame xmlParse
 #' @import data.table
 #'
@@ -52,5 +51,5 @@ ReadEBXGroup <- function(sdmx_group_name) {
   }
 
   #-- read from EBX5--
-  return (getCodeList(connection, branch, instance, gr_name))
+  return (getEBX_Table(connection, branch, instance, gr_name))
 }

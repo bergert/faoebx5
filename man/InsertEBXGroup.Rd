@@ -9,13 +9,10 @@ InsertEBXGroup(data, sdmx_group_name)
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} that will be appended.}
 
-\item{sdmx_group_name}{group name, in SDMX style. Please, see
-the groups available by running the function \code{\link{GetEBXGroups}} in the field "Acronym".
+\item{sdmx_group_name}{group name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXGroups}} in the field "Acronym".
 The actual group location in EBX5 (branch, instance, code-list-name) are resolved
 using the metadata structure.}
-
-\item{folder}{folder name in EBX that the code list is stored.  Please, see
-the code list options by running the function \code{\link{GetEBXGroups}}}
 }
 \value{
 boolean

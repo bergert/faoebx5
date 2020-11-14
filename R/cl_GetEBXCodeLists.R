@@ -8,14 +8,14 @@
 #' \code{\link{ReadEBXCodeList}}.
 #' Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 #'
-#' @param connection is optional
+#' @param ebx5_connection is optional
+#' @inheritParams GetEBXConnection
 #'
 #' @seealso \code{\link{ReadEBXCodeList}} \code{\link{GetEBXGroups}}
 #'
 #' @return Returns an object of the class \code{\link[data.table]{data.table}}
 #'
 #' @importFrom RCurl basicTextGatherer parseHTTPHeader curlPerform
-#' @importFrom keyring key_get
 #' @importFrom XML getNodeSet xmlToDataFrame xmlParse
 #' @import data.table
 #'
@@ -38,6 +38,6 @@ GetEBXCodeLists <- function(ebx5_connection) {
   }
 
   #-- read metadata::EBXCodelist ----
-  return (getCodeList(ebx5_connection, ebx5_connection$meta_branch, ebx5_connection$meta_instance, 'EBXCodelist'))
+  return (getEBX_Table(ebx5_connection, ebx5_connection$meta_branch, ebx5_connection$meta_instance, 'EBXCodelist'))
 }
 

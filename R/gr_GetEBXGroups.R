@@ -14,7 +14,6 @@
 #' @return Returns an object of the class \code{\link[data.table]{data.table}}
 #'
 #' @importFrom RCurl basicTextGatherer parseHTTPHeader curlPerform
-#' @importFrom keyring key_get
 #' @importFrom XML getNodeSet xmlToDataFrame xmlParse
 #' @import data.table
 #'
@@ -36,7 +35,5 @@ GetEBXGroups <- function(connection) {
   }
 
   #-- read metadata::EBXCodelist ----
-  return (getCodeList(connection, connection$meta_branch, connection$meta_instance, 'EBXGroup'))
-
-  return(df)
+  return (getEBX_Table(connection, connection$meta_branch, connection$meta_instance, 'EBXGroup'))
 }

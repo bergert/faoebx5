@@ -4,10 +4,15 @@
 \alias{UpdateEBXCodeList}
 \title{Update rows in EBX5 Code List}
 \usage{
-UpdateEBXCodeList(data, sdmx_name)
+UpdateEBXCodeList(data, sdmx_codelist_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be inserted.}
+\item{data}{a \code{\link[base]{data.frame}} containing all columns to be be updated}
+
+\item{sdmx_codelist_name}{code list name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean
@@ -20,7 +25,6 @@ Requires that the EBX5 connection was configured using \code{\link{SetupEBXConne
 Note that the udpated rows must have the same columns name os the table that will be updated.
 }
 \examples{
-
 \dontrun{
 cl_new <- data.frame(
 Identifier = c(999, 888),
@@ -31,10 +35,7 @@ Branch = 'Fishery',
 Instance = 'Fishery')
 
 UpdateEBXCodeList(data     = cl_new,
-                  cl_name  = 'EBXCodelist',
-                  folder   = 'Metadata',
-                  branch   = 'Fishery',
-                  instance = 'Fishery')
+                  sdmx_codelist_name  = 'EBXCodelist')
 }
 
 }

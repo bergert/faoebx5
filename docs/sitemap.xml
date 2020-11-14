@@ -1,72 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/index.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/index.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/body_get_request.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXCodeLists.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/body_insert_request.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/body_remove_request.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXGroups.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/body_select_request.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/InsertEBXCodeList.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/body_update_request.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/InsertEBXGroup.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/cl_data_insert_xml.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/ReadEBXCodeList.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/faoebx5.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/ReadEBXGroup.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/GetEBXCodeLists.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/RemoveEBXCodeList.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/GetEBXGroups.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/RemoveEBXGroup.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/GetSecret.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/SetupEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/header_fields.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/UpdateEBXCodeList.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/InsertEBXCodeList.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/UpdateEBXGroup.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/InsertEBXGroup.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/cl_data_insert_xml.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/ReadEBXCodeList.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/faoebx5.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/ReadEBXGroup.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/getEBX_Table.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/RemoveEBXCodeList.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/header_fields.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/RemoveEBXCredentials.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/soap_request.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/RemoveEBXGroup.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/update.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/SetEBXCredentials.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/updateTable.html</loc>
   </url>
   <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/UpdateEBXCodeList.html</loc>
-  </url>
-  <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/reference/UpdateEBXGroup.html</loc>
-  </url>
-  <url>
-    <loc>http://lgsilvaesilva.github.io/faoebx5/articles/faoebx5.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/articles/faoebx5.html</loc>
   </url>
 </urlset>

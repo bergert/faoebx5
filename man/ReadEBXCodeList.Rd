@@ -4,11 +4,11 @@
 \alias{ReadEBXCodeList}
 \title{Read EBX5 Code List}
 \usage{
-ReadEBXCodeList(sdmx_code_list_name)
+ReadEBXCodeList(sdmx_codelist_name)
 }
 \arguments{
-\item{sdmx_code_list_name}{code list name, in SDMX style. Please, see
-the code lists available by running the function \code{\link{GetEBXCodeLists}} in the field "Acronym".
+\item{sdmx_codelist_name}{code list name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXCodeLists}} in the field "Acronym".
 The actual codelist location in EBX5 (branch, instance, code-list-name) are resolved
 using the metadata structure.}
 }

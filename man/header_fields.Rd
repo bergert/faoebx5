@@ -2,18 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{header_fields}
 \alias{header_fields}
-\title{Header Fields}
+\title{Soap header; internal}
 \usage{
 header_fields(soap_url)
 }
 \arguments{
-\item{soap_action}{EBX5 SOAP URL to API requests}
+\item{soap_url}{EBX5 SOAP URL to API requests}
 }
 \value{
-character with the header fields
+XML character with the header fields
 }
 \description{
-Builds the header fields
+Create the XML header
 }
 \author{
 Thomas Berger, \email{thomas.berger@fao.org}

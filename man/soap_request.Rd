@@ -2,15 +2,25 @@
 % Please edit documentation in R/utils.R
 \name{soap_request}
 \alias{soap_request}
-\title{Builds the XML body to insert data}
+\title{Builds the XML body to insert data; internal}
 \usage{
-soap_request(.user, .secret, .verb, .type, .branch, .instance)
+soap_request(.user, .secret, .verb, .table, .branch, .instance)
 }
 \arguments{
-\item{.type}{data source, EBXCodelist or EBXGroup}
+\item{.user}{EBX5 user name}
+
+\item{.secret}{name secret}
+
+\item{.verb}{action (select, update, insert, delete)}
+
+\item{.table}{the code-list name}
+
+\item{.branch}{dataset branch}
+
+\item{.instance}{dataset instance}
 }
 \value{
-character
+character XML
 }
 \description{
 Builds the XML body to insert data

@@ -7,7 +7,7 @@
 GetEBXCodeLists(ebx5_connection)
 }
 \arguments{
-\item{connection}{is optional}
+\item{ebx5_connection}{is optional}
 }
 \value{
 Returns an object of the class \code{\link[data.table]{data.table}}

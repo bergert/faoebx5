@@ -4,10 +4,15 @@
 \alias{UpdateEBXGroup}
 \title{Update rows in EBX5 Group}
 \usage{
-UpdateEBXGroup(data, sdmx_name)
+UpdateEBXGroup(data, sdmx_group_name)
 }
 \arguments{
-\item{data}{a \code{\link[base]{data.frame}} that will be appended.}
+\item{data}{a \code{\link[base]{data.frame}} containing all columns to be be updated}
+
+\item{sdmx_group_name}{group name, in SDMX style.
+Available code lists are shown by function \code{\link{GetEBXGroups}} in the field "Acronym".
+The actual group location in EBX5 (branch, instance, code-list-name) are resolved
+using the metadata structure.}
 }
 \value{
 boolean
