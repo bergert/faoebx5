@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   faoebx5: faoebx5.html
-last_built: 2020-11-14T08:16Z
+last_built: 2020-11-14T08:45Z
 urls:
   reference: http://bergertom.github.io/faoebx5/reference
   article: http://bergertom.github.io/faoebx5/articles

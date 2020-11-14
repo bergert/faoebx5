@@ -1,11 +1,9 @@
 
-faoebx5 <img src="man/figures/logo.png" align="right" alt="" width="120" />
-===========================================================================
+# faoebx5 <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-The `faoebx5` package provides tools to read, write, and update data stored in the [EBX5 database] without the need to out of the R/RStudio environment. For statisticians, it is a great advantage to work in the same statistical environment, because it lessens the development time.
+The `faoebx5` package provides tools to read, write, and update data stored in the \[EBX5 database\]. EBX5 is a corporate repository for Master Data Management (MDM), it stores the Single Soruce of Truth (SSOT) of all reference data. This library uses the EBX5-SOAP API. For example, data from EBX5 is used to validate input.
 
-Installation
-------------
+## Installation
 
 The latest development version can be installed from github:
 
@@ -14,7 +12,8 @@ install.packages("devtools")
 devtools::install_github('bergertom/faoebx5')
 ```
 
-Functions
----------
+## Functions
+
+If you come from github: [Reference/Get started](https://bergertom.github.io/faoebx5/):
 
 `faoebx5` provides a set of functions to manage code lists and groups data stored on EBX database. The collection of functions is split into two groups, those to manage code list and those to control groups. Please, see the [Reference](reference/index.html) tab for more details about the functions, or you can start with examples on the page [Get started](articles/faoebx5.html).
