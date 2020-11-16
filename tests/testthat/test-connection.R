@@ -36,9 +36,13 @@ test_that("test GetEBXConnection", {
   expect_false(is.null(connection$ebx_soap_url))
 })
 
-test_that("test GetEBXCodeLists", {
+test_that("test EBXRead", {
+
   # this test read the definitions of code-lists (Metadata/EBXCodelist)
-  metadata_cls <- GetEBXCodeLists()
+  metadata_cls <- EBXRead(branch='Fishery',
+                  instance='Fishery',
+                  folder='Metadata',
+                  table='EBXCodelist')
 
   expect_true(ncol(metadata_cls) > 5)
   expect_true(nrow(metadata_cls) > 10)
@@ -51,27 +55,12 @@ test_that("test GetEBXCodeLists", {
   expect_true(exists('Instance', metadata_cls))
 })
 
-
-test_that("test GetEBXGroups", {
-  # this test read the definitions of code-lists (Metadata/EBXGroup)
-  metadata_grp <- GetEBXGroups()
-
-  expect_true(ncol(metadata_grp) > 7)
-  expect_true(nrow(metadata_grp) > 10)
-
-  expect_true(exists('Identifier', metadata_grp))
-  expect_true(exists('Acronym', metadata_grp))
-  expect_true(exists('from', metadata_grp))
-  expect_true(exists('to', metadata_grp))
-  expect_true(exists('Folder', metadata_grp))
-  expect_true(exists('Name', metadata_grp))
-  expect_true(exists('Branch', metadata_grp))
-  expect_true(exists('Instance', metadata_grp))
-})
-
 test_that("test read Country", {
-  # this test is reading the country code-list using the Acronym (SDMX-name)
-  country <- ReadEBXCodeList('CL_FI_COUNTRY_ITEM')
+  # this test is reading the country code-list
+  country <- EBXRead(branch='Fishery',
+                     instance='Fishery',
+                     folder='Country',
+                     table='CountryItem')
 
   expect_true(ncol(country) > 20)
   expect_true(nrow(country) > 270)

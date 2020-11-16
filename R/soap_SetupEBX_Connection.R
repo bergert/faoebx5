@@ -1,7 +1,7 @@
 #' @title Setup EBX Connection
 #'
-#' @param meta_branch metadata branch name in EBX
-#' @param meta_instance metadata instance name in EBX
+#' @param meta_branch metadata branch name in EBX, used for faostatR library (optional)
+#' @param meta_instance metadata instance name in EBX, used for faostatR library (optional)
 #' @param ebx_soap_url SOAP webservice url
 #' @param username username, a character.
 #' @param password password, a character.
@@ -22,10 +22,15 @@
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-SetupEBXConnection <- function(meta_branch, meta_instance, ebx_soap_url, username, password) {
+SetupEBXConnection <- function(
+      meta_branch = 'Fishery',
+      meta_instance = 'Fishery',
+      ebx_soap_url,
+      username,
+      password) {
 
-  if(missing(meta_branch) || missing(meta_instance) || missing(ebx_soap_url)) {
-     stop('EBX communication details are missing: <meta_branch>, <meta_instance>, <ebx_soap_url>')
+  if(missing(ebx_soap_url)) {
+     stop('EBX communication details are missing: <ebx_soap_url>')
   }
 
   if(missing(username) || missing(password)) {

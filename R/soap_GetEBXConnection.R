@@ -2,7 +2,7 @@
 #'
 #' @description This is a utility function to return connection details
 #' required for using the EBX5 SOAP web-API. This function is not intended for
-#' users, it is exported beacuse it can be used for test purposes.
+#' users, it is exported beacuse it is useful for test purposes.
 #'
 #' @seealso \code{\link{SetupEBXConnection}}.
 #'

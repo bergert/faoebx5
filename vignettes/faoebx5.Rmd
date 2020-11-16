@@ -20,34 +20,36 @@ knitr::opts_chunk$set(
 
 options(width = 95)
 ```
+This library provides the basic connectivity with EBX5. It allows to read, insert, update and delete data stored in EBX5. A previous version of the library was using keyring to persist the password into the secure store provided by the operating system (Windows and macOS). As this library is an additional install on Linux which we use on the shiny server, it cannot be used.
 
-The first time you use the `faoebx5` package you must set your EBX credentials. In this step your credetials will be sotred in the safe way, for this we have used the [`keyring`](https://CRAN.R-project.org/package=keyring) R package. If you would not store your credentials, you should use the function `RemoveEBXCredentials()`. In this overview, we show just the functions related to code lists, once the functions about groups work similarly.
+This is the base library, which requires to specify location and name of each reference in EBX5. `fishstatr` is a companion library, which uses a user-created Metadata structure to allow programs to discover available objects in EBX5, their attributes and connections. Using this library allows the program to access reference-data, whithout having to know the exact location: it allows users to move things in EBX5 wthout breaking the programs which as they use a code-list's Acronym instead of the excat location. 
 
-Once you have typed your password twice after run `SetEBXCredentials()` function, you do not need to rerun this function, because your credential will be kept.
+How to use
+==========
+
+## SetupEBXConnection()
+
+The first time you use the `faoebx5` package you must setup the EBX5 connection details. The faoebx5 library reads the settings from a file, so that you do not have to provide it for every request.
 
 ```{r credentials, echo=TRUE, message=FALSE, warning=FALSE}
 library('faoebx5')
 library('dplyr')
-#SetEBXCredentials(username = "SilvaLu", new = FALSE)
+#SetEBXCredentials(
+#    username = "SilvaLu", 
+#    password="secret", 
+#    ebx_soap_url="https://my-ebx5.com/ebx-dataservices/connector")
 ```
 
+## EBXRead()
 
-## GetEBXCodeLists()
+This function reads code list data from EBX5. The user needs read-only permission for the given dataset, and table.
 
-This function aimed to get the list of code list available in the EBX5. It has two arguments: `branch` and `instance` that default values are set as <span class="badge badge-danger">"Fishery"</span>.
-
-```{r get_codelists, eval=F, include=TRUE}
-#ebx_cl <- GetEBXCodeLists()
-#head(ebx_cl)
-```
-
-## ReadEBXCodeList()
-
-This function aimed to read code list data from EBX5 to R. As we can see,
-
-```{r read_codelists, eval=T, include=TRUE}
-#cl_fao_level1 <- ReadEBXCodeList(sdmx_name = 'CL_FI_COMMODITY_FAO_LEVEL1')
-#cl_fao_level1 %>% tbl_df()
+```{r cl_fao_level1, eval=T, include=TRUE}
+#cl_fao_level1 <- EBXRead(branch='Fishery',
+#'           instance='Fishery',
+#'           folder='Country',
+#'           table='CountryItem')
+#cl_fao_level1
 ```
 
 <hr>
@@ -55,60 +57,96 @@ This function aimed to read code list data from EBX5 to R. As we can see,
 <div class="alert alert-dismissible alert-warning">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <h4 class="alert-heading">Warning!</h4>
-  <p class="mb-0">Please, be aware that the next two functions can modify the original data. Anyway, we should have rights to do changes in the original data.</p>
+  <p class="mb-0">Please, be aware that the next three functions can modify the original data. Your account needs to have rights to do update the original data.</p>
 </div>
 
 <hr>
 
-## InsertEBXCodeList()
+## EBXInsert()
 
-`InsertEBXCodeList()` and `UpdateEBXCodeList()` should be used carefully, because it will change the original data stored in the EBX database. Regardless, this function only can be run by users who are rights to insert and update data in the EBX.
+`EBXInsert()`,`EBXUpdate()` and `EBXRemove()` should be used carefully, as they change the original data stored in the EBX database. The user account used cannot be read-only, and must have been granted write permission on the dataset and on the table.
 
-Currently, `faoebx5` has not implemmented function to remove data in the EBX, so we can  do it only using the EBX user interface.
+In order to uniquely identify the rows, the primary key(s) of the table needs to be specified (usually the Identifier) .
 
-The `InsertEBXCodeList()` function requires a data frame with the new rows that will be inserted. This data frame must contain the same variables/columns of the original table. For instance, the code list `FAO_Level1` has the following columns: `#r names(cl_fao_level1)`. Therefore, the new rows will contain these same columns, as we can see in the data frame `#cl_faolevel1_new`.
-
-```{r new_cl, eval=T, include=TRUE}
-#cl_faolevel1_new <- data.frame(
-#  Identifier = 99999,
-#  FAO_Code = 7L,
-#  NameEn = "XXXX_English",
-#  NameFr = "XXXX_French",
-#  NameEs = "XXXX_Es"
+```{r cl_insert, eval=T, include=TRUE}
+#cl_insert <- data.frame(
+#            Identifier = 99999,
+#            FAO_Code = 7L,
+#            NameEn = "XXXX_English",
+#            NameFr = "XXXX_French",
+#            NameEs = "XXXX_Es"
 #)
-#cl_faolevel1_new
 ```
 
 Once we have created the data frame with the new rows, the next step is to run the function `InsertEBXCodeList()` specificating the arguments: `data` with data frame composed by the news rows to be inserted, `cl_name` the code list name, `folder` the folder name, `branch` the branch name, and  `instance` the instance name.
 
-```{r insert_codelist, eval=F, include=TRUE}
-#all(names(cl_faolevel1_new) == names(cl_fao_level1))
-
-#InsertEBXCodeList(data     = cl_faolevel1_new,
-#                  cl_name  = 'FAO_Level1',
-#                  folder   = 'Commodity',
-#                  branch   = 'Fishery',
-#                  instance = 'Fishery')
-
-#cl_fao_level1 <- ReadEBXCodeList(cl_name = 'FAO_Level1 ')
-#cl_fao_level1 %>% tbl_df()
+```{r cl_read, eval=F, include=TRUE}
+#EBXInsert(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table',
+#           data=cl_insert)
+#)
+#
+#cl_read <- EBXRead(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table')
+#cl_read
 ```
 
-## UpdateEBXCodeList()
+## EBXUpdate()
 
-`UpdateEBXCodeList()` function works similarly to `InsertEBXCodeList()`. Therefore, we have to create a data frame with the data that we desire to update and then specify the code list name, as well as the `folder` name, `branch` name, and the `instance` name. In this example, we just changed the data stored in the column `NameEs` from `XXXX_Es` to `Name spanish`.
+`EBXUpdate()` function updates or inserts exiating information in the database. In this example, we just changed the data stored in the column `NameEs` from `XXXX_Es` to `Name spanish`.
 
-```{r update_codelist, eval=F, include=TRUE}
-#cl_update <- cl_faolevel1_new
-#cl_update <- cl_update %>%
-#  mutate(NameEs = 'Name spanish')
+```{r cl_update, , cl_read, eval=F, include=TRUE}
+#cl_update <- data.frame(
+#            Identifier = 99999,
+#            FAO_Code = 7L,
+#            NameEn = "XXXX_English",
+#            NameFr = "XXXX_French",
+#            NameEs = "Name spanish"
+#)
+#
+#EBXUpdate(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table',
+#           data=cl_update)
+#)
+#
+#cl_read <- EBXRead(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table')
+#cl_read
+```
 
-#UpdateEBXCodeList(data = cl_update,
-#                  cl_name  = 'FAO_Level1',
-#                  folder   = 'Commodity',
-#                  branch   = 'Fishery',
-#                  instance = 'Fishery')
+## EBXRemove()
 
-#cl_fao_level1 <- ReadEBXCodeList(cl_name = 'FAO_Level1 ')
-#cl_fao_level1 %>% tbl_df()
+`EBXRemove()` deletes rows in the database. For a delete, you only have to specify the primary key.
+
+```{r cl_delete, eval=F, include=TRUE}
+#cl_delete <- data.frame(
+#            Identifier = 99999
+#)
+#
+#EBXRemove(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table',
+#           data=cl_delete)
+#)
+#
+#cl_read <- EBXRead(
+#           branch='Fishery',
+#           instance='Fishery',
+#           folder='Metadata',
+#           table='Test_table')
+#cl_read
 ```

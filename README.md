@@ -1,7 +1,9 @@
 
 # faoebx5 <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-The `faoebx5` package provides tools to read, write, and update data stored in the \[EBX5 database\]. EBX5 is a corporate repository for Master Data Management (MDM), it stores the Single Soruce of Truth (SSOT) of all reference data. This library uses the EBX5-SOAP API. For example, data from EBX5 is used to validate input.
+The `faoebx5` package provides low-level communication tools to read, write, and update data stored in the \[EBX5 database\]. EBX5 is a corporate repository for Master Data Management (MDM), it stores the Single Soruce of Truth (SSOT) of all reference data. This library uses the EBX5-SOAP API. For example, data from EBX5 is used to validate input.
+
+For an application-level Interface with EBX5: [faostatR](https://bergertom.github.io/faostatR/):
 
 ## Installation
 
