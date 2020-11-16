@@ -26,6 +26,8 @@
 #'
 #' @importFrom XML addChildren
 #'
+#' @export
+#'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 EBXRemove <- function(branch, instance, folder, folder2='', table, data) {

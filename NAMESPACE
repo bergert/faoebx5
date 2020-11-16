@@ -2,6 +2,7 @@
 
 export(EBXInsert)
 export(EBXRead)
+export(EBXRemove)
 export(EBXUpdate)
 export(GetEBXConnection)
 export(SetupEBXConnection)
