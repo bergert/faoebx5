@@ -4,7 +4,8 @@
 \alias{EBXInsert}
 \title{Insert rows in EBX5 Code List}
 \usage{
-EBXInsert(branch, instance, folder, folder2 = "", table, data)
+EBXInsert(branch, instance, folder, folder2 = "", table, data,
+  connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
@@ -18,6 +19,8 @@ EBXInsert(branch, instance, folder, folder2 = "", table, data)
 \item{table}{ebx5 table name}
 
 \item{data}{a \code{\link[base]{data.frame}} containing all columns to be be inserted}
+
+\item{connection}{the result of \code{\link{GetEBXConnection}}; optional}
 }
 \value{
 boolean

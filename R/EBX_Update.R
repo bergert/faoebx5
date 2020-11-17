@@ -36,15 +36,17 @@
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-EBXUpdate <- function(branch, instance, folder, folder2='', table, data) {
+EBXUpdate <- function(branch, instance, folder, folder2='', table, data, connection = NA) {
 
   #-- connection details ----
-  connection <- GetEBXConnection()
+  if (missing(connection) || is.na(connection)) {
+    connection <- GetEBXConnection()
+  }
   if(missing(branch) || missing(instance)) {
     stop('Please, specify branch and instance for ', table)
   }
   if(missing(folder) || missing(table)) {
-    stop('Please, specify branch and instance for ', table)
+    stop('Please, specify folder and table for ', table)
   }
 
   ##-- SOAP: Header ----

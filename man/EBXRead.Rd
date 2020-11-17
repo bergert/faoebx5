@@ -4,7 +4,7 @@
 \alias{EBXRead}
 \title{Read EBX5 Code List}
 \usage{
-EBXRead(branch, instance, folder, folder2 = "", table)
+EBXRead(branch, instance, folder, folder2 = "", table, connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
@@ -16,6 +16,8 @@ EBXRead(branch, instance, folder, folder2 = "", table)
 \item{folder2}{optional second level folder}
 
 \item{table}{ebx5 table name}
+
+\item{connection}{the result of \code{\link{GetEBXConnection}}; optional}
 }
 \value{
 Return an object of the class \code{\link[data.table]{data.table}}.

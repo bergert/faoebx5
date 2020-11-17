@@ -1,0 +1,36 @@
+url: http://bergertom.github.io/faoebx5
+
+template:
+  params:
+    bootswatch: flatly
+
+authors:
+  Thomas Berger:
+    href: https://bergertom.github.io
+  Luis G. Silva e Silva:
+    href: https://lgsilvaesilva.github.io
+
+home:
+  links:
+  - text: Browse source code at
+    href: https://github.com/bergertom/faoebx5
+  - text: Report a bug at
+    href: https://github.com/bergertom/faoebx5/issues
+
+reference:
+  - title: The faoebx R package
+    contents:
+    - faoebx5
+
+  - title: manage the SOAP connection
+    contents:
+    - SetupEBXConnection
+    - GetEBXConnection
+
+  - title: Access EBX5 tables
+    contents:
+    - EBXInsert
+    - EBXRead
+    - EBXRemove
+    - EBXUpdate
+

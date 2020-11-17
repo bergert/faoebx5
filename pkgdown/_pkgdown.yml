@@ -22,23 +22,15 @@ reference:
     contents:
     - faoebx5
 
-  - title: EBX connection
+  - title: manage the SOAP connection
     contents:
     - SetupEBXConnection
     - GetEBXConnection
 
-  - title: EBX Code Lists
+  - title: Access EBX5 tables
     contents:
-    - GetEBXCodeLists
-    - ReadEBXCodeList
-    - InsertEBXCodeList
-    - UpdateEBXCodeList
-    - RemoveEBXCodeList
+    - EBXInsert
+    - EBXRead
+    - EBXRemove
+    - EBXUpdate
 
-  - title: EBX Group
-    contents:
-    - GetEBXGroups
-    - ReadEBXGroup
-    - InsertEBXGroup
-    - UpdateEBXGroup
-    - RemoveEBXGroup

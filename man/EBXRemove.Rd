@@ -4,7 +4,8 @@
 \alias{EBXRemove}
 \title{Remove rows in EBX5 Code List}
 \usage{
-EBXRemove(branch, instance, folder, folder2 = "", table, data)
+EBXRemove(branch, instance, folder, folder2 = "", table, data,
+  connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
@@ -19,6 +20,8 @@ EBXRemove(branch, instance, folder, folder2 = "", table, data)
 
 \item{data}{a \code{\link[base]{data.frame}} that will be removed.
 data must specify the unique primary key(s); which identify the rows to be removed.}
+
+\item{connection}{the result of \code{\link{GetEBXConnection}}; optional}
 }
 \value{
 boolean

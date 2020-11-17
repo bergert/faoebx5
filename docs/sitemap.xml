@@ -4,61 +4,37 @@
     <loc>http://bergertom.github.io/faoebx5/index.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXCodeLists.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/EBXInsert.html</loc>
+  </url>
+  <url>
+    <loc>http://bergertom.github.io/faoebx5/reference/EBXRead.html</loc>
+  </url>
+  <url>
+    <loc>http://bergertom.github.io/faoebx5/reference/EBXRemove.html</loc>
+  </url>
+  <url>
+    <loc>http://bergertom.github.io/faoebx5/reference/EBXUpdate.html</loc>
   </url>
   <url>
     <loc>http://bergertom.github.io/faoebx5/reference/GetEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXGroups.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/InsertEBXCodeList.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/InsertEBXGroup.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/ReadEBXCodeList.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/ReadEBXGroup.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/RemoveEBXCodeList.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/RemoveEBXGroup.html</loc>
-  </url>
-  <url>
     <loc>http://bergertom.github.io/faoebx5/reference/SetupEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/UpdateEBXCodeList.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/body_request_data.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/UpdateEBXGroup.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/cl_data_insert_xml.html</loc>
+    <loc>http://bergertom.github.io/faoebx5/reference/data_convert_xml.html</loc>
   </url>
   <url>
     <loc>http://bergertom.github.io/faoebx5/reference/faoebx5.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/getEBX_Table.html</loc>
   </url>
   <url>
     <loc>http://bergertom.github.io/faoebx5/reference/header_fields.html</loc>
   </url>
   <url>
     <loc>http://bergertom.github.io/faoebx5/reference/soap_request.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/update.html</loc>
-  </url>
-  <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/updateTable.html</loc>
   </url>
   <url>
     <loc>http://bergertom.github.io/faoebx5/articles/faoebx5.html</loc>

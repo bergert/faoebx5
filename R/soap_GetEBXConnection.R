@@ -9,6 +9,7 @@
 #' @return Returns a \code{\link[data.table]{data.table}} with the connection details
 #'
 #' @importFrom yaml yaml.load_file
+#'
 #' @export
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}

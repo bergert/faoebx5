@@ -4,7 +4,8 @@
 \alias{EBXUpdate}
 \title{Update rows in EBX5 Code List}
 \usage{
-EBXUpdate(branch, instance, folder, folder2 = "", table, data)
+EBXUpdate(branch, instance, folder, folder2 = "", table, data,
+  connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
@@ -18,6 +19,8 @@ EBXUpdate(branch, instance, folder, folder2 = "", table, data)
 \item{table}{ebx5 table name}
 
 \item{data}{a \code{\link[base]{data.frame}} containing the columns to be be updated}
+
+\item{connection}{the result of \code{\link{GetEBXConnection}}; optional}
 }
 \value{
 boolean

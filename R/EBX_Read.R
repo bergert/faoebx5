@@ -8,6 +8,7 @@
 #' @param folder folder where the table is
 #' @param folder2 optional second level folder
 #' @param table ebx5 table name
+#' @param connection the result of \code{\link{GetEBXConnection}}; optional
 #'
 #' @seealso \code{\link{GetEBXConnection}}.
 #'
@@ -34,16 +35,17 @@
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 #'
-EBXRead <- function(branch, instance, folder, folder2='', table) {
+EBXRead <- function(branch, instance, folder, folder2='', table, connection = NA) {
 
   #-- connection details ----
-  connection <- GetEBXConnection()
-
+  if (missing(connection) || is.na(connection)) {
+    connection <- GetEBXConnection()
+  }
   if(missing(branch) || missing(instance)) {
     stop('Please, specify branch and instance for ', table)
   }
   if(missing(folder) || missing(table)) {
-    stop('Please, specify branch and instance for ', table)
+    stop('Please, specify folder and table for ', table)
   }
 
   ##-- SOAP: Header ----
