@@ -2,23 +2,22 @@
 #'
 #' @description Create the XML header
 #'
-#' @param soap_url EBX5 SOAP URL to API requests
+#' @param soap_verb EBX5 SOAP verb
 #'
 #' @return XML character with the header fields
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-header_fields <- function(soap_url) {
+header_fields <- function(soap_verb) {
 
-  if(missing(soap_url)) {
-    stop('<soap_url> is required')
+  if(missing(soap_verb)) {
+    stop('<soap_verb> is required')
   }
 
   header <- c(Accept = "text/xml",
               Accept = "multipart/*",
-              `Content-Type` = "text/xml; charset=utf-8",
-              SOAPAction = soap_url)
-
+              `Content-Type` = "text/xml;charset=UTF-8",
+              SOAPAction = sprintf('"%s"', soap_verb))
   return(header)
 }
 
@@ -37,14 +36,14 @@ header_fields <- function(soap_url) {
 #'
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
-soap_request <- function(.user,
+soap_request_read <- function(.user,
                          .secret,
                          .verb,
                          .table,
                          .branch,
                          .instance) {
 
-  body <- sprintf('<?xml version="1.0" encoding="utf-8"?>
+  body <- sprintf('<?xml version="1.0" encoding="UTF-8"?>
                   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sec="http://schemas.xmlsoap.org/ws/2002/04/secext" xmlns:urn="urn:ebx-schemas:dataservices_1.0">
                   <soapenv:Header>
                   <sec:Security>
@@ -89,7 +88,7 @@ soap_request <- function(.user,
 #' @author Thomas Berger, \email{thomas.berger@fao.org}
 #' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 #'
-body_request_data <- function(.user,
+soap_request_update <- function(.user,
                               .secret,
                               .branch,
                               .instance,
@@ -109,7 +108,7 @@ body_request_data <- function(.user,
                       .folder2, .folder2,
                       .folder);
   }
-  body <- sprintf('<?xml version="1.0" encoding="utf-8"?>
+  body <- sprintf('<?xml version="1.0" encoding="UTF-8"?>
                   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sec="http://schemas.xmlsoap.org/ws/2002/04/secext" xmlns:urn="urn:ebx-schemas:dataservices_1.0">
                   <soapenv:Header>
                   <sec:Security>
@@ -138,6 +137,58 @@ body_request_data <- function(.user,
                   .instance,
                   folder,
                   .verb, .table)
+
+  return(body)
+}
+
+#' @title Builds the XML body for a delete request
+#'
+#' @description Builds the XML body which containd data.
+#'
+#' @param .user username
+#' @param .secret user password
+#' @param .branch branch name
+#' @param .instance intance name
+#' @param .table the table name
+#' @param .predicate the EBX predicate is an XPath expression
+#'
+#' @return character
+#'
+#' @author Thomas Berger, \email{thomas.berger@fao.org}
+#' @author Luís G. Silva e Silva, \email{luis.silvaesilva@fao.org}
+#'
+soap_request_delete <- function(.user,
+                              .secret,
+                              .branch,
+                              .instance,
+                              .table,
+                              .predicate) {
+
+  body <- sprintf('<?xml version="1.0" encoding="UTF-8"?>
+                  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ebx-schemas:dataservices_1.0" xmlns:sec="http://schemas.xmlsoap.org/ws/2002/04/secext">
+                  <soapenv:Header>
+                  <sec:Security>
+                  <UsernameToken>
+                  <Username>%s</Username>
+                  <Password>%s</Password>
+                  </UsernameToken>
+                  </sec:Security>
+                  </soapenv:Header>
+                  <soapenv:Body>
+                  <urn:delete_%s>
+                  <branch>%s</branch>
+                  <instance>%s</instance>
+                  <predicate>%s</predicate>
+                  </urn:delete_%s>
+                  </soapenv:Body>
+                  </soapenv:Envelope>',
+                  .user,
+                  .secret,
+                  .table,
+                  .branch,
+                  .instance,
+                  .predicate,
+                  .table)
 
   return(body)
 }

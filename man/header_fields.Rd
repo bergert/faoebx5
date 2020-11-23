@@ -4,10 +4,10 @@
 \alias{header_fields}
 \title{Soap header; internal}
 \usage{
-header_fields(soap_url)
+header_fields(soap_verb)
 }
 \arguments{
-\item{soap_url}{EBX5 SOAP URL to API requests}
+\item{soap_verb}{EBX5 SOAP verb}
 }
 \value{
 XML character with the header fields

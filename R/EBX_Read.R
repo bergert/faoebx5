@@ -49,21 +49,22 @@ EBXRead <- function(branch, instance, folder, folder2='', table, connection = NA
   }
 
   ##-- SOAP: Header ----
-  headerFields <- header_fields(connection$ebx_soap_url)
+  headerFields <- header_fields('select')
 
   ##-- Body: request ----
-  body <- soap_request    (.user     = connection$username,
-                           .secret   = connection$password,
-                           .verb     = 'select',
-                           .table    = table,
-                           .branch   = branch,
-                           .instance = instance)
+  body <- soap_request_read(
+    .user     = connection$username,
+    .secret   = connection$password,
+    .verb     = 'select',
+    .table    = table,
+    .branch   = branch,
+    .instance = instance)
 
   ##-- API request ----
   reader <- basicTextGatherer()
   header <- basicTextGatherer()
 
-  curlPerform(url = headerFields["SOAPAction"],
+  curlPerform(url = connection$ebx_soap_url,
               httpheader = headerFields,
               postfields = body,
               writefunction = reader$update,

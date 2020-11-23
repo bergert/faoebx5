@@ -4,22 +4,17 @@
 \alias{EBXRemove}
 \title{Remove rows in EBX5 Code List}
 \usage{
-EBXRemove(branch, instance, folder, folder2 = "", table, data,
-  connection = NA)
+EBXRemove(branch, instance, table, data, connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
 
 \item{instance}{dataset instance}
 
-\item{folder}{folder where the table is}
-
-\item{folder2}{optional second level folder}
-
 \item{table}{ebx5 table name}
 
 \item{data}{a \code{\link[base]{data.frame}} that will be removed.
-data must specify the unique primary key(s); which identify the rows to be removed.}
+data must specify the unique primary key(s); which identify the row to be removed.}
 
 \item{connection}{the result of \code{\link{GetEBXConnection}}; optional}
 }
@@ -27,21 +22,20 @@ data must specify the unique primary key(s); which identify the rows to be remov
 boolean
 }
 \description{
-This function deletes data rows from a code list stored in EBX5.
+This function deletes a single data row from a code list stored in EBX5.
 }
 \details{
-All fiels of a primary key (usually the Identifier) must be present.
+All fields of a primary key (usually the Identifier) must be present.
 Using the SOAP-API the column names and tabe table name are not the label visible in EBX, but the name.
 Requires that the EBX5 connection was configured using \code{\link{SetupEBXConnection}}.
 }
 \examples{
 \dontrun{
 cl_remove <- data.frame(
-Identifier = c(999, 888))
+Identifier = c(999))
 
-EBXRemove(branch   = 'Fishery',
+EBXRemove( branch   = 'Fishery',
           instance = 'Fishery',
-          folder   = 'Metadata',
           table    = 'Test_table',
           data     = cl_remove)
 }
@@ -49,6 +43,4 @@ EBXRemove(branch   = 'Fishery',
 }
 \author{
 Thomas Berger, \email{thomas.berger@fao.org}
-
-Luis G. Silva e Silva, \email{luis.silvaesilva@fao.org}
 }

@@ -50,17 +50,18 @@ EBXUpdate <- function(branch, instance, folder, folder2='', table, data, connect
   }
 
   ##-- SOAP: Header ----
-  headerFields <- header_fields()
+  headerFields <- header_fields('update')
 
   ##-- Body: request ----
-  body <- body_request_data(.user     = connection$username,
-                            .secret   = connection$password,
-                            .branch   = branch,
-                            .instance = instance,
-                            .folder   = folder,
-                            .folder2  = folder2,
-                            .table    = table,
-                            .verb     = 'update')
+  body <- soap_request_update(
+    .user     = connection$username,
+    .secret   = connection$password,
+    .branch   = branch,
+    .instance = instance,
+    .folder   = folder,
+    .folder2  = folder2,
+    .table    = table,
+    .verb     = 'update')
 
   ##-- Building XML object----
   out_list <- data_convert_xml(.data = data, .table = table)
@@ -77,7 +78,7 @@ EBXUpdate <- function(branch, instance, folder, folder2='', table, data, connect
   reader <- basicTextGatherer()
   header <- basicTextGatherer()
 
-  curlPerform(url = headerFields[['SOAPAction']],
+  curlPerform(url = connection$ebx_soap_url,
               httpheader = headerFields,
               postfields = body_text,
               writefunction = reader$update,

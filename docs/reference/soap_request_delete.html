@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get EBX Groups — GetEBXGroups • faoebx5</title>
+<title>Builds the XML body for a delete request — soap_request_delete • faoebx5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -48,14 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get EBX Groups — GetEBXGroups" />
-<meta property="og:description" content="This function returns the list of groups
-defined in the 'Metatadata' structure in EBX5. Metadata contains
-the instance, branch and the code-list name used in EBX5.
-This way, the software uses the SDMX-style group name, and the actual
-location inside EBX5 can be changed without breaking the software.
-Requires that the EBX5 connection was configured using SetupEBXConnection." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:title" content="Builds the XML body for a delete request — soap_request_delete" />
+<meta property="og:description" content="Builds the XML body which containd data." />
+<meta property="og:image" content="http://bergertom.github.io/faoebx5/logo.png" />
 
 
 
@@ -121,48 +116,54 @@ Requires that the EBX5 connection was configured using SetupEBXConnection." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get EBX Groups</h1>
+    <h1>Builds the XML body for a delete request</h1>
     
-    <div class="hidden name"><code>GetEBXGroups.Rd</code></div>
+    <div class="hidden name"><code>soap_request_delete.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns the list of groups
-defined in the 'Metatadata' structure in EBX5. Metadata contains
-the instance, branch and the code-list name used in EBX5.
-This way, the software uses the SDMX-style group name, and the actual
-location inside EBX5 can be changed without breaking the software.
-Requires that the EBX5 connection was configured using <code><a href='SetupEBXConnection.html'>SetupEBXConnection</a></code>.</p>
+    <p>Builds the XML body which containd data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>GetEBXGroups</span><span class='op'>(</span><span class='va'>connection</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>soap_request_delete</span><span class='op'>(</span><span class='va'>.user</span>, <span class='va'>.secret</span>, <span class='va'>.branch</span>, <span class='va'>.instance</span>, <span class='va'>.table</span>, <span class='va'>.predicate</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>connection</th>
-      <td><p>is optional</p></td>
+      <th>.user</th>
+      <td><p>username</p></td>
+    </tr>
+    <tr>
+      <th>.secret</th>
+      <td><p>user password</p></td>
+    </tr>
+    <tr>
+      <th>.branch</th>
+      <td><p>branch name</p></td>
+    </tr>
+    <tr>
+      <th>.instance</th>
+      <td><p>intance name</p></td>
+    </tr>
+    <tr>
+      <th>.table</th>
+      <td><p>the table name</p></td>
+    </tr>
+    <tr>
+      <th>.predicate</th>
+      <td><p>the EBX predicate is an XPath expression</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns an object of the class <code><a href='https://rdrr.io/pkg/data.table/man/data.table.html'>data.table</a></code></p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='ReadEBXGroup.html'>ReadEBXGroup</a></code> <code><a href='GetEBXCodeLists.html'>GetEBXCodeLists</a></code></p></div>
+    <p>character</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Thomas Berger, <a href='mailto:thomas.berger@fao.org'>thomas.berger@fao.org</a></p>
-<p>Luis G. Silva e Silva, <a href='mailto:luis.silvaesilva@fao.org'>luis.silvaesilva@fao.org</a></p>
+<p>Luís G. Silva e Silva, <a href='mailto:luis.silvaesilva@fao.org'>luis.silvaesilva@fao.org</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>GetEBXGroups</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -174,7 +175,7 @@ Requires that the EBX5 connection was configured using <code><a href='SetupEBXCo
 
       <footer>
       <div class="copyright">
-  <p>Developed by Thomas Berger, Luis G. Silva e Silva.</p>
+  <p>Developed by <a href='https://bergertom.github.io'>Thomas Berger</a>, <a href='https://lgsilvaesilva.github.io'>Luis G. Silva e Silva</a>.</p>
 </div>
 
 <div class="pkgdown">
