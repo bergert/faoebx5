@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bergertom.github.io/faoebx5/index.html</loc>
+    <loc>http://bergert.github.io/faoebx5/index.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/EBXInsert.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/EBXInsert.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/EBXRead.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/EBXRead.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/EBXRemove.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/EBXRemove.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/EBXUpdate.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/EBXUpdate.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/GetEBXConnection.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/GetEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/SetupEBXConnection.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/SetupEBXConnection.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/data_convert_xml.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/data_convert_xml.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/faoebx5.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/faoebx5.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/header_fields.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/header_fields.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/soap_request_delete.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/soap_request_delete.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/soap_request_read.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/soap_request_read.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/reference/soap_request_update.html</loc>
+    <loc>http://bergert.github.io/faoebx5/reference/soap_request_update.html</loc>
   </url>
   <url>
-    <loc>http://bergertom.github.io/faoebx5/articles/faoebx5.html</loc>
+    <loc>http://bergert.github.io/faoebx5/articles/faoebx5.html</loc>
   </url>
 </urlset>

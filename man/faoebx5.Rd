@@ -3,7 +3,6 @@
 \docType{package}
 \name{faoebx5}
 \alias{faoebx5}
-\alias{faoebx5-package}
 \title{faoebx5: an R package to access EBX5 data from R.}
 \description{
 The faoebx5 package provides tools to read, write,

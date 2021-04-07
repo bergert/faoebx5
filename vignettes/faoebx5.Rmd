@@ -1,12 +1,12 @@
 ---
-title: 'faoebx5 overview'
+title: 'faoebx5 library'
 date: '`r Sys.Date()`'
 output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 3
     vignette: >
-      %\VignetteIndexEntry{faoebx5-overview}
+      %\VignetteIndexEntry{faoebx5 library}
       %\VignetteEngine{knitr::rmarkdown}
       %\VignetteEncoding{UTF-8}
 ---

@@ -1,4 +1,4 @@
-url: http://bergertom.github.io/faoebx5
+url: http://bergert.github.io/faoebx5
 
 template:
   params:
@@ -6,16 +6,14 @@ template:
 
 authors:
   Thomas Berger:
-    href: https://bergertom.github.io
+    href: http://bergert.github.io/
   Luis G. Silva e Silva:
     href: https://lgsilvaesilva.github.io
 
 home:
   links:
   - text: Browse source code at
-    href: https://github.com/bergertom/faoebx5
-  - text: Report a bug at
-    href: https://github.com/bergertom/faoebx5/issues
+    href: https://github.com/bergert/faoebx5
 
 reference:
   - title: The faoebx R package

@@ -4,8 +4,16 @@
 \alias{soap_request_update}
 \title{Builds the XML body with data}
 \usage{
-soap_request_update(.user, .secret, .branch, .instance, .folder, .folder2,
-  .table, .verb)
+soap_request_update(
+  .user,
+  .secret,
+  .branch,
+  .instance,
+  .folder,
+  .folder2,
+  .table,
+  .verb
+)
 }
 \arguments{
 \item{.user}{username}

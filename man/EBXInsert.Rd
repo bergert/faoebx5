@@ -4,8 +4,7 @@
 \alias{EBXInsert}
 \title{Insert rows in EBX5 Code List}
 \usage{
-EBXInsert(branch, instance, folder, folder2 = "", table, data,
-  connection = NA)
+EBXInsert(branch, instance, folder, folder2 = "", table, data, connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}

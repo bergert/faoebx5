@@ -4,8 +4,13 @@
 \alias{SetupEBXConnection}
 \title{Setup EBX Connection}
 \usage{
-SetupEBXConnection(meta_branch = "Fishery", meta_instance = "Fishery",
-  ebx_soap_url, username, password)
+SetupEBXConnection(
+  meta_branch = "Fishery",
+  meta_instance = "Fishery",
+  ebx_soap_url,
+  username,
+  password
+)
 }
 \arguments{
 \item{meta_branch}{metadata branch name in EBX, used for faostatR library (optional)}

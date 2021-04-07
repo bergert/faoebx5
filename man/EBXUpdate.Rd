@@ -4,8 +4,7 @@
 \alias{EBXUpdate}
 \title{Update rows in EBX5 Code List}
 \usage{
-EBXUpdate(branch, instance, folder, folder2 = "", table, data,
-  connection = NA)
+EBXUpdate(branch, instance, folder, folder2 = "", table, data, connection = NA)
 }
 \arguments{
 \item{branch}{dataset branch}
