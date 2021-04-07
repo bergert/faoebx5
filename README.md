@@ -9,7 +9,7 @@ the EBX5-SOAP API. For example, data from EBX5 is used to validate
 input.
 
 For an application-level interface with EBX5:
-[fishstatR](https://bergertom.github.io/fishstatr/):
+[fishstatR](https://bergert.github.io/fishstatr/):
 
 ## Installation
 
@@ -17,13 +17,13 @@ The latest development version can be installed from github:
 
 ``` r
 install.packages("devtools")
-devtools::install_github('bergertom/faoebx5')
+devtools::install_github('bergert/faoebx5')
 ```
 
 ## Functions
 
 If you come from github: [Reference/Get
-started](https://bergertom.github.io/faoebx5/):
+started](https://bergert.github.io/faoebx5/):
 
 `faoebx5` provides a set of functions to manage code lists and groups
 data stored on EBX database. The collection of functions is split into
