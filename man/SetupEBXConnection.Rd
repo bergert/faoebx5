@@ -13,9 +13,9 @@ SetupEBXConnection(
 )
 }
 \arguments{
-\item{meta_branch}{metadata branch name in EBX, used for faostatR library (optional)}
+\item{meta_branch}{metadata branch name in EBX, used for faostatR library (default is Fishery)}
 
-\item{meta_instance}{metadata instance name in EBX, used for faostatR library (optional)}
+\item{meta_instance}{metadata instance name in EBX, used for faostatR library (default is Fishery)}
 
 \item{ebx_soap_url}{SOAP webservice url}
 

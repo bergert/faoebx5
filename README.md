@@ -22,12 +22,11 @@ devtools::install_github('bergert/faoebx5')
 
 ## Functions
 
-If you come from github: [Reference/Get
-started](https://bergert.github.io/faoebx5/):
-
 `faoebx5` provides a set of functions to manage code lists and groups
 data stored on EBX database. The collection of functions is split into
 two groups, those to manage code list and those to control groups.
-Please, see the [Reference](reference/index.html) tab for more details
-about the functions, or you can start with examples on the page [Get
-started](articles/faoebx5.html).
+Please, see the
+[Reference](https://bergert.github.io/faoebx5/reference/index.html) tab
+for more details about the functions, or you can start with examples on
+the page \[Get started
+\](<https://bergert.github.io/faoebx5/articles/faoebx5.html>.

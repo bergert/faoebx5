@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">faoebx5</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -68,12 +68,12 @@
 
       
 
-      </header><script src="faoebx5_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="faoebx5_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>faoebx5 library</h1>
             
-            <h4 class="date">2021-04-07</h4>
+            <h4 class="date">2021-11-17</h4>
       
       
       <div class="hidden name"><code>faoebx5.Rmd</code></div>
@@ -82,8 +82,9 @@
 
     
     
-<p>This library provides the basic connectivity with EBX5. It allows to read, insert, update and delete data stored in EBX5. A previous version of the library was using keyring to persist the password into the secure store provided by the operating system (Windows and macOS). As this library is an additional install on Linux which we use on the shiny server, it cannot be used.</p>
+<p>This library provides the basic connectivity with EBX5. It allows to read, insert, update and delete data stored in EBX5. A previous version of the library was using keyring to persist the password into the secure store provided by the operating system (Windows and macOS). Use of keyring requires an additional install on Linux, and access to the server. Without server access, we cannot use keyring.</p>
 <p>This is the base library, which requires to specify location and name of each reference in EBX5. <code>fishstatr</code> is a companion library, which uses a user-created Metadata structure to allow programs to discover available objects in EBX5, their attributes and connections. Using this library allows the program to access reference-data, whithout having to know the exact location: it allows users to move things in EBX5 wthout breaking the programs which as they use a code-list’s Acronym instead of the excat location.</p>
+<p>Faoexb5 needs to know how to connect to the EBX5 server. This can be done in two different ways: 1) ebx5_connection.yaml file created by  or using environment variables (EBX5_URL,EBX5_USERID, EBX5_SECRET, BRANCH, INSTANCE). For use with a shiny app, the best way is to setup the environment variables in the Rstudio connect app settings panel. If this is not possible (hqlprsws1 server), or for local use you cerate the YAML file (explained below). With the yaml file present (user PC), or the environment variables your shiny app will work without code change.</p>
 <div id="how-to-use" class="section level1">
 <h1 class="hasAnchor">
 <a href="#how-to-use" class="anchor"></a>How to use</h1>
@@ -97,6 +98,8 @@
 <span class="co">#SetEBXCredentials(</span>
 <span class="co">#    username = "SilvaLu", </span>
 <span class="co">#    password="secret", </span>
+<span class="co">#     meta_branch = 'Fishery',</span>
+<span class="co">#     meta_instance = 'Fishery',</span>
 <span class="co">#    ebx_soap_url="https://my-ebx5.com/ebx-dataservices/connector")</span></code></pre></div>
 </div>
 <div id="ebxread" class="section level2">

@@ -20,9 +20,12 @@ knitr::opts_chunk$set(
 
 options(width = 95)
 ```
-This library provides the basic connectivity with EBX5. It allows to read, insert, update and delete data stored in EBX5. A previous version of the library was using keyring to persist the password into the secure store provided by the operating system (Windows and macOS). As this library is an additional install on Linux which we use on the shiny server, it cannot be used.
+This library provides the basic connectivity with EBX5. It allows to read, insert, update and delete data stored in EBX5. A previous version of the library was using keyring to persist the password into the secure store provided by the operating system (Windows and macOS). Use of keyring requires an additional install on Linux, and  access to the server. Without server access, we cannot use keyring.
 
 This is the base library, which requires to specify location and name of each reference in EBX5. `fishstatr` is a companion library, which uses a user-created Metadata structure to allow programs to discover available objects in EBX5, their attributes and connections. Using this library allows the program to access reference-data, whithout having to know the exact location: it allows users to move things in EBX5 wthout breaking the programs which as they use a code-list's Acronym instead of the excat location. 
+
+Faoexb5 needs to know how to connect to the EBX5 server. This can be done in two different ways: 1) ebx5_connection.yaml file created by \code{\link{SetupEBXConnection}} or using environment variables (EBX5_URL,EBX5_USERID, EBX5_SECRET, BRANCH, INSTANCE).
+For use with a shiny app, the best way is to setup the environment variables in the Rstudio connect app settings panel. If this is not possible (hqlprsws1 server), or for local use you cerate the YAML file (explained below). With the yaml file present (user PC), or the environment variables your shiny app will work without code change.
 
 How to use
 ==========
@@ -37,6 +40,8 @@ library('dplyr')
 #SetEBXCredentials(
 #    username = "SilvaLu", 
 #    password="secret", 
+#     meta_branch = 'Fishery',
+#     meta_instance = 'Fishery',
 #    ebx_soap_url="https://my-ebx5.com/ebx-dataservices/connector")
 ```
 

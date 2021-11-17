@@ -1,7 +1,7 @@
 Package: faoebx5
 Type: Package
 Title: faoebx5: an R package to access EBX5 data from R
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: c(
     person("Thomas", "Berger", email = "thomas.berger@fao.org",  role = c("aut", "cre")),
     person("Luis G.", "Silva e Silva", email = "luis.silvaesilva@fao.org",  role = c("aut")))

@@ -51,7 +51,10 @@
 <meta property="og:title" content="Get EBX5 Connection details — GetEBXConnection" />
 <meta property="og:description" content="This is a utility function to return connection details
 required for using the EBX5 SOAP web-API. This function is not intended for
-users, it is exported beacuse it is useful for test purposes." />
+users, it is exported beacuse it is useful for test purposes.
+The connection can be setup in two ways: 1) ebx5_connection.yaml file created by
+SetupEBXConnection or using environment variables (EBX5_URL,
+EBX5_USERID, EBX5_SECRET, BRANCH, INSTANCE)" />
 <meta property="og:image" content="http://bergert.github.io/faoebx5/logo.png" />
 
 
@@ -84,7 +87,7 @@ users, it is exported beacuse it is useful for test purposes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">faoebx5</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -126,7 +129,10 @@ users, it is exported beacuse it is useful for test purposes." />
     <div class="ref-description">
     <p>This is a utility function to return connection details
 required for using the EBX5 SOAP web-API. This function is not intended for
-users, it is exported beacuse it is useful for test purposes.</p>
+users, it is exported beacuse it is useful for test purposes.
+The connection can be setup in two ways: 1) ebx5_connection.yaml file created by
+<code><a href='SetupEBXConnection.html'>SetupEBXConnection</a></code> or using environment variables (EBX5_URL,
+EBX5_USERID, EBX5_SECRET, BRANCH, INSTANCE)</p>
     </div>
 
     <pre class="usage"><span class='fu'>GetEBXConnection</span><span class='op'>(</span><span class='op'>)</span></pre>
@@ -135,6 +141,13 @@ users, it is exported beacuse it is useful for test purposes.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></code> with the connection details</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The connection to EBX5 is required for use of this library.
+For use with a shiny app, the best way is to setup the environment variables in the Rstudio
+connect app settings panel. If this is not possible (hqlprsws1 server), or for local use
+you cerate the YAML file. With the yaml file present (user PC), or the environment variables
+the library will work without code change.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='SetupEBXConnection.html'>SetupEBXConnection</a></code>.</p></div>

@@ -13,6 +13,16 @@ Returns a \code{\link[data.table]{data.table}} with the connection details
 This is a utility function to return connection details
 required for using the EBX5 SOAP web-API. This function is not intended for
 users, it is exported beacuse it is useful for test purposes.
+The connection can be setup in two ways: 1) ebx5_connection.yaml file created by
+\code{\link{SetupEBXConnection}} or using environment variables (EBX5_URL,
+EBX5_USERID, EBX5_SECRET, BRANCH, INSTANCE)
+}
+\details{
+The connection to EBX5 is required for use of this library.
+For use with a shiny app, the best way is to setup the environment variables in the Rstudio
+connect app settings panel. If this is not possible (hqlprsws1 server), or for local use
+you cerate the YAML file. With the yaml file present (user PC), or the environment variables
+your shiny app will work without code change.
 }
 \seealso{
 \code{\link{SetupEBXConnection}}.

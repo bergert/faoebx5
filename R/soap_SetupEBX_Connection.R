@@ -1,7 +1,7 @@
 #' @title Setup EBX Connection
 #'
-#' @param meta_branch metadata branch name in EBX, used for faostatR library (optional)
-#' @param meta_instance metadata instance name in EBX, used for faostatR library (optional)
+#' @param meta_branch metadata branch name in EBX, used for faostatR library (default is Fishery)
+#' @param meta_instance metadata instance name in EBX, used for faostatR library (default is Fishery)
 #' @param ebx_soap_url SOAP webservice url
 #' @param username username, a character.
 #' @param password password, a character.
