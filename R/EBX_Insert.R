@@ -34,7 +34,7 @@
 EBXInsert <- function(branch, instance, folder, folder2='', table, data, connection = NA) {
 
   #-- connection details ----
-  if (missing(connection) || is.na(connection)) {
+  if (missing(connection) || all(is.na(connection))) {
     connection <- GetEBXConnection()
   }
   if(missing(branch) || missing(instance)) {

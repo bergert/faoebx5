@@ -2,6 +2,7 @@
 % Please edit documentation in R/faoebx5.R
 \docType{package}
 \name{faoebx5}
+\alias{faoebx5-package}
 \alias{faoebx5}
 \title{faoebx5: an R package to access EBX5 data from R.}
 \description{
